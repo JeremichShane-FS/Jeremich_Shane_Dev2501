@@ -1,10 +1,8 @@
-# Jeremich_Shane_Dev2501
+# Top 3 git commands
 
-- **Your name:**
-  - Shane Jeremich
-- **Name of your program**
-  - Web Development
-- **Name of class**
-  - Interface Programming - Online
-- **Month of class**
-  - April
+clone repo
+git clone https://github.com/user/yoururl.git
+Create a new branch
+git branch my-branch
+Change Branches
+git checkout my-branch
