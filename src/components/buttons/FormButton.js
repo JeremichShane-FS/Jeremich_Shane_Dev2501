@@ -15,7 +15,6 @@ const styles = {
   button: {
     width: "9.375rem",
     background: "#3a3b3c",
-    color: "#fff",
     padding: "0.625rem 0.9375rem",
     margin: "0.3125rem",
     border: "none",

@@ -1,5 +1,5 @@
 const Card = ({ children }) => {
-  return <div style={styles.card}>{children}</div>;
+  return <article style={styles.card}>{children}</article>;
 };
 
 export default Card;

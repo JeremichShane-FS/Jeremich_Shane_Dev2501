@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const TooltipText = styled.div`
-  visibility: hidden;
+  display: none;
   width: max-content;
   background-color: #f5f5f5;
   color: #222;
@@ -10,7 +10,7 @@ const TooltipText = styled.div`
   padding: 5px;
   border-radius: 6px;
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   bottom: 125%;
   left: 50%;
   transform: translateX(-50%);
@@ -35,7 +35,7 @@ const TooltipContainer = styled.div`
   cursor: pointer;
 
   &:hover ${TooltipText} {
-    visibility: visible;
+    display: block;
     opacity: 1;
   }
 `;

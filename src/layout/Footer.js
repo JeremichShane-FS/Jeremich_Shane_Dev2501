@@ -11,10 +11,9 @@ export default Footer;
 const styles = {
   footer: {
     backgroundColor: "#222",
-    color: "#fff",
     textAlign: "center",
     padding: "1rem",
-    position: "absolute",
+    position: "fixed",
     bottom: "0",
     width: "100%",
   },

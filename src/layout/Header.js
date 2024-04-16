@@ -10,12 +10,12 @@ const Header = ({ title }) => {
   return (
     <StyledHeader>
       <section className="logo-container" style={styles.logoContainer}>
-        <img src={logo} alt="FriendSpace Logo" style={styles.logo} />
-        <h1 style={styles.h1}>{title}</h1>
+        <img src={logo} alt="FriendSpace Logo" style={styles.logoContainer.logo} />
+        <h1 style={styles.logoContainer.h1}>{title}</h1>
       </section>
       <section className="search-bar" style={styles.searchContainer}>
-        <div style={styles.searchWrapper}>
-          <FaSearch style={styles.faSearch} />
+        <div style={styles.searchContainer.div}>
+          <FaSearch color={"#222"} style={styles.faSearch} />
           <SearchBar placeholder="Search" aria-label="Search" />
         </div>
       </section>
@@ -38,50 +38,52 @@ const styles = {
     gridTemplateColumns: "20% 1fr 20%",
     padding: "1rem",
     background: "#222",
-    color: "#fff",
     width: "100%",
-    position: "relative",
+    position: "fixed",
+    top: "0",
   },
   logoContainer: {
     display: "flex",
     alignItems: "center",
+
+    logo: {
+      height: "1.5625rem",
+      marginRight: "0.5rem",
+      cursor: "pointer",
+    },
+
+    h1: {
+      fontFamily: "Poppins, sans-serif",
+      fontSize: "1.5rem",
+      fontWeight: "900",
+      cursor: "pointer",
+    },
   },
-  logo: {
-    height: "1.5625rem",
-    marginRight: "0.5rem",
-    cursor: "pointer",
-  },
-  h1: {
-    fontFamily: "Poppins, sans-serif",
-    fontSize: "1.5rem",
-    fontWeight: "900",
-    cursor: "pointer",
-  },
+
   searchContainer: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+
+    div: {
+      background: "#fff",
+      display: "flex",
+      width: "75%",
+      alignItems: "center",
+      paddingLeft: "0.5rem",
+      borderRadius: "1.25rem",
+    },
   },
-  searchWrapper: {
-    background: "#fff",
-    display: "flex",
-    width: "75%",
-    alignItems: "center",
-    paddingLeft: "0.5rem",
-    borderRadius: "1.25rem",
-  },
+
   profileContainer: {
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "center",
   },
   icons: {
-    marginRight: "1rem",
-    fontSize: "1.25rem",
+    marginRight: "1.25rem",
+    fontSize: "1.5rem",
     cursor: "pointer",
-  },
-  faSearch: {
-    color: "#222",
   },
   status: {
     width: "12px",
@@ -93,10 +95,11 @@ const styles = {
     bottom: "0",
     transform: "translate(50%, -50%)",
     backgroundColor: "#4b4e6d",
-  },
-  // This is here for when I need it later
-  active: {
-    backgroundColor: "#30f94b",
+
+    // This is here for when I need it later
+    active: {
+      backgroundColor: "#30f94b",
+    },
   },
 };
 
@@ -106,8 +109,9 @@ const StyledHeader = styled.header`
   grid-template-columns: ${styles.header.gridTemplateColumns};
   padding: ${styles.header.padding};
   background: ${styles.header.background};
-  color: ${styles.header.color};
   width: ${styles.header.width};
+  position: ${styles.header.position};
+  z-index: 1000;
 
   .search-bar {
     transition: 0.3s;

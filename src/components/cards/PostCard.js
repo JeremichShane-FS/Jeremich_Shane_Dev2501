@@ -4,36 +4,33 @@ import { FaPhotoVideo, FaUserTag } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { HiGif } from "react-icons/hi2";
 import styled from "styled-components";
-import { userProfile } from "../../constants/userProfile";
-import Avatar from "../Avatar";
+import { handleObjectInputChange } from "../../utils/handleInputChange";
+import AvatarInput from "../AvatarInput";
 import InputField from "../InputField";
 import Tooltip from "../Tooltip";
 import FormButton from "../buttons/FormButton";
 import Card from "./Card";
 
 const PostCard = () => {
-  // useState is outside the scope of this assignment but I wanted to imnplement it to show how it would be used
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState({ title: "", post: "" });
 
-  const handleInputChange = e => {
-    setInputValue(e.target.value);
-  };
+  // TODO: Will remove input for Title of post in the future, but for now, it's required
 
   return (
     <Card>
-      <header style={styles.topRow}>
-        <Avatar img={userProfile.img} />
-        <StyledInput
-          type="text"
-          placeholder={`What's on your mind, ${userProfile.firstName}?`}
-          style={styles.input}
-          value={inputValue}
-          onChange={handleInputChange}
+      <div style={styles.inputsContainer}>
+        <InputField
+          style={styles.postTitle}
+          placeholder="Title of post"
+          onChange={e => handleObjectInputChange(e, setInputValue)}
+          value={inputValue.title}
+          name="title"
         />
-      </header>
+        <AvatarInput name="post" onInputChange={e => handleObjectInputChange(e, setInputValue)} />
+      </div>
       <section style={styles.post}>
         <div style={styles.postIcons}>
-          <p>Add to your Post</p>
+          <PostIconsText className="post-icons-text">Add to your Post</PostIconsText>
           <ul style={styles.iconList}>
             <li style={styles.listItem}>
               <Tooltip text="Photo/Video">
@@ -62,13 +59,12 @@ const PostCard = () => {
             </li>
           </ul>
         </div>
-
         <FormButton
           style={{
-            backgroundColor: inputValue ? "#861388" : "#3a3b3c",
-            cursor: inputValue ? "pointer" : "not-allowed",
+            backgroundColor: inputValue.title && inputValue.post ? "#861388" : "#3a3b3c",
+            cursor: inputValue.title && inputValue.post ? "pointer" : "not-allowed",
           }}
-          disabled={!inputValue}>
+          disabled={!(inputValue.title && inputValue.post)}>
           Post
         </FormButton>
       </section>
@@ -79,19 +75,12 @@ const PostCard = () => {
 export default PostCard;
 
 const styles = {
-  input: {
-    width: "100%",
-    padding: "0.625rem 0.9375rem",
-    border: "none",
-    outline: "none",
-    borderRadius: "1.25rem",
-    color: "#fff",
-    transition: "0.3s",
+  postTitle: {
+    backgroundColor: "#3a3b3c",
+    margin: "0 auto 1rem",
   },
-  topRow: {
-    display: "flex",
-    gap: "1rem",
-    alignItems: "center",
+
+  inputsContainer: {
     paddingBottom: "1rem",
     borderBottom: "1px solid #4a4b4c",
   },
@@ -105,7 +94,6 @@ const styles = {
     alignItems: "center",
     gap: "2rem",
     padding: "0 1rem",
-    color: "#fff",
     fontWeight: "bold",
   },
   iconList: {
@@ -126,14 +114,8 @@ const styles = {
   },
 };
 
-const StyledInput = styled(InputField)`
-  background: #3a3b3c;
-  &:hover {
-    background: #4a4b4c;
-    transform: scale(1.01);
-  }
-  &:focus {
-    background: #4a4b4c;
-    transform: scale(1.01);
+const PostIconsText = styled.p`
+  @media (max-width: 1380px) {
+    display: none;
   }
 `;

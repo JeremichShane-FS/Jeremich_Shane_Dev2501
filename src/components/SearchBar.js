@@ -2,7 +2,7 @@ import { useState } from "react";
 import InputField from "./InputField";
 
 const SearchBar = ({ placeholder }) => {
-  //useState for later functiionality
+  //useState for later functionality
   const [searchQuery, setSearchQuery] = useState("");
 
   //function to handle search change for later functionality
@@ -28,6 +28,7 @@ export default SearchBar;
 
 const styles = {
   input: {
+    color: "#222",
     border: "none",
     outline: "none",
     padding: "0.5rem 1.5rem 0.5rem",
