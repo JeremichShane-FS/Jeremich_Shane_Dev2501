@@ -43,7 +43,7 @@ export const navSidebar = [
   {
     label: "Video",
     icon: PiVideoFill,
-    color: "#4b4e6d",
+    color: "#aa0000",
     aria: "Navigate to Video",
     path: "/video",
     component: InteractionButton,

@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { AiOutlineLike } from "react-icons/ai";
-import { FaRegEdit, FaRegShareSquare } from "react-icons/fa";
+import { FaRegShareSquare } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
 import { GoComment } from "react-icons/go";
 import { TiEdit } from "react-icons/ti";
