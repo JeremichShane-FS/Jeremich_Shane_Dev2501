@@ -1,0 +1,174 @@
+@use "../../utilities/" as *;
+
+.card {
+  background-color: #222;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.ad-card {
+  @include flex-center;
+  gap: 1rem;
+
+  &__image {
+    width: 6.25rem;
+    height: 6.25rem;
+    border-radius: 5px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__title,
+  &__subtitle {
+    font-size: 0.8rem;
+  }
+
+  &__title {
+    font-weight: bold;
+  }
+}
+
+.newsfeed-card {
+  &__header-container,
+  &__span {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  &__profile {
+    @include flex-center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  &__profile {
+    margin-bottom: 1rem;
+
+    &__picture {
+      margin-right: 1rem;
+    }
+
+    &__user-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-weight: bold;
+
+      &__timestamp {
+        font-size: 0.8rem;
+        font-weight: normal;
+      }
+    }
+  }
+
+  &__post-content {
+    margin-bottom: 1rem;
+
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__post-image {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+  }
+
+  &__post-footer {
+    &__social {
+      @include flex-center;
+      justify-content: space-between;
+      font-size: 0.9rem;
+    }
+  }
+
+  &__interaction {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border-top: 1px solid #4a4b4c;
+    border-bottom: 1px solid #4a4b4c;
+
+    &__button {
+      @include flex-center;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    &__icon {
+      margin-right: 0.5rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  &__comment-input {
+    margin-top: 1rem;
+  }
+}
+
+.post-card {
+  &__inputs-container {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #4a4b4c;
+  }
+
+  &__title {
+    background-color: #3a3b3c;
+    margin: 0 auto 1rem;
+  }
+
+  &__post {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+
+  &__post-icons {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 1rem;
+    font-weight: bold;
+  }
+
+  &__icon-list {
+    display: flex;
+    list-style: none;
+    font-size: 2.5rem;
+    height: max-content;
+  }
+
+  &__list-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+  }
+
+  &__icon {
+    padding: 5px;
+  }
+
+  &__post-icons-text {
+    font-size: 0.9rem;
+    @media (max-width: 1380px) {
+      display: none;
+    }
+  }
+}

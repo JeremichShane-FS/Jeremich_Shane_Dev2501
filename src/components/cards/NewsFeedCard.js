@@ -6,13 +6,13 @@ import { GoComment } from "react-icons/go";
 import { TiEdit } from "react-icons/ti";
 import formatTimestamp from "../../utils/formatTimestamp";
 import Avatar from "../Avatar";
-import AvatarInput from "../AvatarInput";
+import CommentItem from "../CommentItem";
 import Tooltip from "../Tooltip";
 import InteractionButton from "../buttons/InteractionButton";
+import InputAvatar from "../forms/InputAvatar";
 import Card from "./Card";
-import CommentCard from "./CommentCard";
 
-const NewsFeedCard = ({
+const NewsfeedCard = ({
   post: { timestamp, content, image_url, likes, comments },
   user: { profile_picture, name },
   users,
@@ -36,20 +36,22 @@ const NewsFeedCard = ({
 
   return (
     <Card>
-      <div style={styles.headerContainer}>
-        <div style={styles.profile}>
+      <div className="newsfeed-card__header-container">
+        <div className="newsfeed-card__profile">
           <Avatar
             img={profile_picture}
-            style={styles.profilePicture}
+            className="newsfeed-card__profile__picture"
             width="3.125rem"
             height="3.125rem"
           />
-          <div style={styles.userInfo}>
+          <div className="newsfeed-card__profile__user-info">
             <h3>{name}</h3>
-            <p style={styles.userInfo.timestamp}>{formatTimestamp(timestamp)}</p>
+            <p className="newsfeed-card__profile__user-info__timestamp">
+              {formatTimestamp(timestamp)}
+            </p>
           </div>
         </div>
-        <span style={styles.span}>
+        <span className="newsfeed-card__span">
           <Tooltip text="Edit">
             <TiEdit />
           </Tooltip>
@@ -58,17 +60,17 @@ const NewsFeedCard = ({
           </Tooltip>
         </span>
       </div>
-      <div style={styles.postContent}>
-        <p style={styles.postContent.p}>{content}</p>
+      <div className="newsfeed-card__post-content">
+        <p className="newsfeed-card__post-content p">{content}</p>
         {image_url && (
           <picture>
             <source srcSet={image_url} media="(min-width: 768px)" />
-            <img src={image_url} alt={`Post by ${name}`} style={styles.postImage} />
+            <img src={image_url} alt={`Post by ${name}`} className="newsfeed-card__post-image" />
           </picture>
         )}
       </div>
-      <div style={styles.postFooter}>
-        <div style={styles.postFooter.social}>
+      <div className="newsfeed-card__post-footer">
+        <div className="newsfeed-card__post-footer__social">
           <p>{likes} Likes</p>
           <Tooltip
             text={comments.map((comment, index) => (
@@ -81,95 +83,36 @@ const NewsFeedCard = ({
           </Tooltip>
         </div>
 
-        <div style={styles.interaction}>
-          <InteractionButton icon={AiOutlineLike} text="Like" onClick={handleLike} />
-          <InteractionButton icon={GoComment} text="Comment" onClick={handleComment} />
-          <InteractionButton icon={FaRegShareSquare} text="Share" onClick={handleShare} />
+        <div className="newsfeed-card__interaction">
+          <InteractionButton
+            icon={AiOutlineLike}
+            text="Like"
+            onClick={handleLike}
+            className="newsfeed-card__interaction__button"
+            classIcon="newsfeed-card__interaction__icon"
+          />
+          <InteractionButton
+            icon={GoComment}
+            text="Comment"
+            onClick={handleComment}
+            className="newsfeed-card__interaction__button"
+            classIcon="newsfeed-card__interaction__icon"
+          />
+          <InteractionButton
+            icon={FaRegShareSquare}
+            text="Share"
+            onClick={handleShare}
+            className="newsfeed-card__interaction__button"
+            classIcon="newsfeed-card__interaction__icon"
+          />
         </div>
-        <CommentCard comments={comments} users={users} />
-        <div style={styles.commentInput}>
-          <AvatarInput placeholder="Write a comment..." height="2rem" width="2rem" showIcon />
+        <CommentItem comments={comments} users={users} />
+        <div className="newsfeed-card__comment-input">
+          <InputAvatar placeholder="Write a comment..." height="2rem" width="2rem" showIcon />
         </div>
       </div>
     </Card>
   );
 };
 
-export default NewsFeedCard;
-
-const styles = {
-  headerContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-    marginBottom: "1rem",
-  },
-  profile: {
-    display: "flex",
-    marginBottom: "1rem",
-  },
-  profilePicture: {
-    marginRight: "1rem",
-  },
-  userInfo: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    fontWeight: "bold",
-
-    timestamp: {
-      fontSize: "0.8rem",
-      fontWeight: "normal",
-    },
-  },
-  span: {
-    display: "flex",
-    gap: "1rem",
-    fontSize: "2rem",
-    cursor: "pointer",
-  },
-  postContent: {
-    marginBottom: "1rem",
-    p: {
-      marginBottom: "1rem",
-    },
-  },
-  postImage: {
-    width: "100%",
-    marginBottom: "1rem",
-    borderRadius: "8px",
-  },
-  postFooter: {
-    social: {
-      display: "flex",
-      justifyContent: "space-between",
-    },
-  },
-  interaction: {
-    display: "flex",
-    justifyContent: "space-around",
-    gap: "1rem",
-    fontWeight: "bold",
-    margin: "1rem 0",
-    padding: "0.5rem",
-    borderTop: "1px solid #4a4b4c",
-    borderBottom: "1px solid #4a4b4c",
-
-    button: {
-      display: "flex",
-      alignItems: "center",
-      cursor: "pointer",
-      border: "none",
-      background: "none",
-      padding: 0,
-      fontSize: "1rem",
-      color: "#fff",
-    },
-  },
-  commentInput: {
-    marginTop: "1rem",
-  },
-  icon: {
-    marginRight: "0.5rem",
-    fontSize: "1.5rem",
-  },
-};
+export default NewsfeedCard;

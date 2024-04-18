@@ -3,12 +3,11 @@ import { BsEmojiLaughing } from "react-icons/bs";
 import { FaPhotoVideo, FaUserTag } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { HiGif } from "react-icons/hi2";
-import styled from "styled-components";
 import { handleObjectInputChange } from "../../utils/handleInputChange";
-import AvatarInput from "../AvatarInput";
-import InputField from "../InputField";
 import Tooltip from "../Tooltip";
 import FormButton from "../buttons/FormButton";
+import InputAvatar from "../forms/InputAvatar";
+import InputField from "../forms/InputField";
 import Card from "./Card";
 
 const PostCard = () => {
@@ -18,53 +17,53 @@ const PostCard = () => {
 
   return (
     <Card>
-      <div style={styles.inputsContainer}>
+      <div className="post-card__inputs-container">
         <InputField
-          style={styles.postTitle}
+          className="post-card__title"
           placeholder="Title of post"
           onChange={e => handleObjectInputChange(e, setInputValue)}
           value={inputValue.title}
           name="title"
+          type="text"
         />
-        <AvatarInput name="post" onInputChange={e => handleObjectInputChange(e, setInputValue)} />
+        <InputAvatar name="post" onInputChange={e => handleObjectInputChange(e, setInputValue)} />
       </div>
-      <section style={styles.post}>
-        <div style={styles.postIcons}>
-          <PostIconsText className="post-icons-text">Add to your Post</PostIconsText>
-          <ul style={styles.iconList}>
-            <li style={styles.listItem}>
+      <section className="post-card__post">
+        <div className="post-card__post-icons">
+          <p className="post-card__post-icons-text">Add to your Post</p>
+          <ul className="post-card__icon-list">
+            <li className="post-card__list-item">
               <Tooltip text="Photo/Video">
-                <FaPhotoVideo color="#58C472" style={styles.icon} />
+                <FaPhotoVideo color="#58C472" className="post-card__icon" />
               </Tooltip>
             </li>
-            <li style={styles.listItem}>
+            <li className="post-card__list-item">
               <Tooltip text="Tag people">
-                <FaUserTag color="#3085F3" style={styles.icon} title="Tag a friend" />
+                <FaUserTag color="#3085F3" className="post-card__icon" title="Tag a friend" />
               </Tooltip>
             </li>
-            <li style={styles.listItem}>
+            <li className="post-card__list-item">
               <Tooltip text="Feeling/activity">
-                <BsEmojiLaughing color="#F8C03E" style={styles.icon} title="Add an emoji" />
+                <BsEmojiLaughing color="#F8C03E" className="post-card__icon" title="Add an emoji" />
               </Tooltip>
             </li>
-            <li style={styles.listItem}>
+            <li className="post-card__list-item">
               <Tooltip text="Check in">
-                <FaLocationDot color="#F66551" style={styles.icon} title="Add a location" />
+                <FaLocationDot color="#F66551" className="post-card__icon" title="Add a location" />
               </Tooltip>
             </li>
-            <li style={styles.listItem}>
+            <li className="post-card__list-item">
               <Tooltip text="Gif">
-                <HiGif color="#40C2B0" style={styles.icon} title="Add a GIF" />
+                <HiGif color="#40C2B0" className="post-card__icon" title="Add a GIF" />
               </Tooltip>
             </li>
           </ul>
         </div>
+
         <FormButton
-          style={{
-            backgroundColor: inputValue.title && inputValue.post ? "#861388" : "#3a3b3c",
-            cursor: inputValue.title && inputValue.post ? "pointer" : "not-allowed",
-          }}
-          disabled={!(inputValue.title && inputValue.post)}>
+          className={`btn-form ${inputValue.title && inputValue.post ? "btn-form--active" : ""}`}
+          disabled={!(inputValue.title && inputValue.post)}
+          onClick={() => console.log("posting...")}>
           Post
         </FormButton>
       </section>
@@ -73,49 +72,3 @@ const PostCard = () => {
 };
 
 export default PostCard;
-
-const styles = {
-  postTitle: {
-    backgroundColor: "#3a3b3c",
-    margin: "0 auto 1rem",
-  },
-
-  inputsContainer: {
-    paddingBottom: "1rem",
-    borderBottom: "1px solid #4a4b4c",
-  },
-  post: {
-    display: "flex",
-    justifyContent: "space-between",
-    marginTop: "1rem",
-  },
-  postIcons: {
-    display: "flex",
-    alignItems: "center",
-    gap: "2rem",
-    padding: "0 1rem",
-    fontWeight: "bold",
-  },
-  iconList: {
-    display: "flex",
-    listStyle: "none",
-    fontSize: "2.5rem",
-    height: "max-content",
-  },
-  listItem: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: "50%",
-    transition: "background 0.3s ease",
-  },
-  icon: {
-    padding: "5px",
-  },
-};
-
-const PostIconsText = styled.p`
-  @media (max-width: 1380px) {
-    display: none;
-  }
-`;

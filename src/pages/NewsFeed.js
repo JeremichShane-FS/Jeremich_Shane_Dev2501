@@ -1,17 +1,17 @@
 import { Component } from "react";
-import NewsFeedCard from "../components/cards/NewsFeedCard";
+import NewsfeedCard from "../components/cards/NewsfeedCard";
 import PostCard from "../components/cards/PostCard";
 import { mockPosts } from "../data/mockPosts";
 import { mockUsers } from "../data/mockUsers";
 
-export default class NewsFeed extends Component {
+export default class Newsfeed extends Component {
   render() {
     return (
       <>
         <PostCard />
         {mockPosts.posts.map(post => {
           const user = mockUsers.users.find(user => user.id === post.userId);
-          return <NewsFeedCard key={post.id} post={post} user={user} users={mockUsers.users} />;
+          return <NewsfeedCard key={post.id} post={post} user={user} users={mockUsers.users} />;
         })}
       </>
     );

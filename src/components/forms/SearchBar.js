@@ -19,20 +19,9 @@ const SearchBar = ({ placeholder }) => {
       value={searchQuery}
       placeholder={placeholder}
       onChange={handleSearchChange}
-      style={styles.input}
+      className="searchbar__input"
     />
   );
 };
 
 export default SearchBar;
-
-const styles = {
-  input: {
-    color: "#222",
-    border: "none",
-    outline: "none",
-    padding: "0.5rem 1.5rem 0.5rem",
-    width: "100%",
-    borderRadius: "1.25rem",
-  },
-};

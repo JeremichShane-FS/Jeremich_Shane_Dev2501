@@ -1,50 +1,25 @@
+import Card from "./Card";
+
 const AdCard = ({ ad }) => {
   if (!ad || ad.length === 0) {
     return null;
   }
 
+  const { id, url, image, title, description } = ad;
+
   return (
-    <article>
-      <a href={ad.url} target="_blank" rel="noreferrer" key={ad.id} style={styles.a}>
-        <div style={styles.adContainer}>
-          <img src={ad.image} alt={ad.title} style={styles.img} />
-          <div style={styles.div}>
-            <h3 style={styles.title}>{ad.description}</h3>
-            <p style={styles.subtitle}>{ad.url}</p>
+    <Card>
+      <a href={url} target="_blank" rel="noreferrer" key={id}>
+        <div className="ad-card">
+          <img src={image} alt={title} className="ad-card__image" />
+          <div className="ad-card__content">
+            <h3 className="ad-card__title">{description}</h3>
+            <p className="ad-card__subtitle">{url}</p>
           </div>
         </div>
       </a>
-    </article>
+    </Card>
   );
 };
 
 export default AdCard;
-
-const styles = {
-  adContainer: {
-    display: "flex",
-    alignItems: "center",
-    gap: "1rem",
-    padding: "1rem",
-  },
-  a: {
-    textDecoration: "none",
-  },
-  img: {
-    width: "6.25rem",
-    height: "6.25rem",
-    borderRadius: "5px",
-  },
-  div: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "0.5rem",
-  },
-  title: {
-    fontSize: "0.8rem",
-    fontWeight: "bold",
-  },
-  subtitle: {
-    fontSize: "0.8rem",
-  },
-};

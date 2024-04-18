@@ -1,24 +1,26 @@
-const Avatar = ({ img, children, border, style, width = "3.125rem", height = "3.125rem" }) => {
-  const avatarStyle = {
-    ...style,
-    ...styles.avatar,
-    backgroundImage: `url(${img})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    border: border ? "2px solid #fff" : "none",
-    width: width,
-    height: height,
-  };
+import React from "react";
 
-  return <div style={avatarStyle}>{children}</div>;
-};
+const Avatar = ({
+  img,
+  children,
+  border,
+  width = "3.125rem",
+  height = "3.125rem",
+  className = "",
+}) => {
+  const avatarClass = `avatar ${border ? "border" : ""} ${className}`.trim();
 
-const styles = {
-  avatar: {
-    borderRadius: "50%",
-    position: "relative",
-    cursor: "pointer",
-  },
+  return (
+    <div
+      className={avatarClass}
+      style={{
+        backgroundImage: `url(${img})`,
+        width: width,
+        height: height,
+      }}>
+      {children}
+    </div>
+  );
 };
 
 export default Avatar;

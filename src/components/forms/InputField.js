@@ -5,7 +5,6 @@ const InputField = ({
   name = "",
   placeholder = "",
   type = "text",
-  style = {},
   onChange = () => {},
 }) => {
   return !label ? (
@@ -15,11 +14,10 @@ const InputField = ({
       name={name}
       placeholder={placeholder}
       onChange={onChange}
-      style={{ ...styles.input, ...style }}
-      className={className}
+      className={`inputfield__input${className ? ` ${className}` : ""}`}
     />
   ) : (
-    <div style={styles.div}>
+    <div className="inputfield__div">
       <label htmlFor={name}>{label}</label>
       <input
         type={type}
@@ -27,26 +25,10 @@ const InputField = ({
         name={name}
         placeholder={placeholder}
         onChange={onChange}
-        style={{ ...styles.input, ...style }}
-        className={className}
+        className={`inputfield__input${className ? ` ${className}` : ""}`}
       />
     </div>
   );
 };
 
 export default InputField;
-
-const styles = {
-  div: {
-    width: "100%",
-  },
-  input: {
-    width: "100%",
-    padding: "0.625rem 0.9375rem",
-    border: "none",
-    outline: "none",
-    borderRadius: "1.25rem",
-    color: "#fff",
-    transition: "0.3s",
-  },
-};

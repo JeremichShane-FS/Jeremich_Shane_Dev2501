@@ -5,10 +5,10 @@ import { mockAds } from "../data/mockAds";
 export default class AdSection extends Component {
   render() {
     return (
-      <section style={styles.section}>
+      <section className="ad-section">
         <ul>
           {mockAds.map(ad => (
-            <li style={styles.li} key={ad.id}>
+            <li className="ad-section__list-item" key={ad.id}>
               <AdCard ad={ad} />
             </li>
           ))}
@@ -17,13 +17,3 @@ export default class AdSection extends Component {
     );
   }
 }
-
-const styles = {
-  section: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(15rem, 1fr))",
-  },
-  li: {
-    listStyleType: "none",
-  },
-};

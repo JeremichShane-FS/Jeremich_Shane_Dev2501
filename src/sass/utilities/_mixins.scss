@@ -1,0 +1,9 @@
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin button-style {
+  padding: 0.625rem 0.9375rem;
+  cursor: pointer;
+}

@@ -1,0 +1,43 @@
+@use "../../utilities" as *;
+@use "../../base/colors" as *;
+
+.btn-form {
+  @include button-style;
+  width: 9.375rem;
+  background: $dark-gray-200;
+  margin: 0.3125rem;
+  border: none;
+  border-radius: 0.3125rem;
+  transition: 0.3s;
+
+  &--active {
+    background-color: $post-active-color;
+    color: inherit;
+  }
+
+  &:not(&--active) {
+    cursor: not-allowed;
+    color: $gray-600;
+  }
+}
+
+.btn-interaction {
+  @include flex-center;
+  background: none;
+  color: #fff;
+  border: none;
+
+  &__icon {
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  &__nav-sidebar__icon {
+    margin-right: 1rem;
+    font-size: 2rem;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}

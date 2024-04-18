@@ -1,0 +1,28 @@
+@use "../utilities/" as *;
+
+.comment-item {
+  margin-top: 1rem;
+
+  &__comment {
+    @include flex-center;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+
+    &__avatar {
+      margin-right: 0.5rem;
+    }
+
+    &__bubble {
+      display: flex;
+      flex-direction: column;
+      padding: 0.5rem;
+      background-color: #4a4b4c;
+      border-radius: 0.9375rem;
+      font-size: 0.95rem;
+
+      &__name {
+        font-weight: bold;
+      }
+    }
+  }
+}
