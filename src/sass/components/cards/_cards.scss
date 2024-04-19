@@ -2,11 +2,7 @@
 @use "../../utilities/" as *;
 
 .card {
-  background-color: $eerie-black;
-  padding: $medium-gap;
-  margin-bottom: $medium-gap;
-  border-radius: 5px;
-  box-shadow: 0 0 10px $rgba-black-10;
+  @include card-style;
 }
 
 .ad-card {
