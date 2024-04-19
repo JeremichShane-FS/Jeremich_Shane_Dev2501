@@ -123,13 +123,22 @@
 
 .post-card {
   &__inputs-container {
+    display: grid;
+    grid-template-columns: 3.625rem auto;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "null title" "name name";
     padding-bottom: 1rem;
     border-bottom: 1px solid #4a4b4c;
   }
 
-  &__title {
+  &__title-input {
     background-color: #3a3b3c;
     margin: 0 auto 1rem;
+    grid-area: title;
+  }
+
+  &__name-input {
+    grid-area: name;
   }
 
   &__post {

@@ -12,6 +12,7 @@ const InputAvatar = ({
   width = "3.125rem",
   height = "3.125rem",
   name,
+  className = "",
 }) => {
   const { firstName } = userProfile;
   placeholder = placeholder || `What's on your mind, ${firstName}?`;
@@ -29,7 +30,7 @@ const InputAvatar = ({
   };
 
   return (
-    <div className="input-avatar__container">
+    <div className={`input-avatar__container ${className}`}>
       <Avatar img={userProfile.img} height={height} width={width} />
       <div className="input-avatar__input-container">
         <InputField

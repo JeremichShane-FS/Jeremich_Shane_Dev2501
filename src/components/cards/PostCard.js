@@ -19,14 +19,18 @@ const PostCard = () => {
     <Card>
       <div className="post-card__inputs-container">
         <InputField
-          className="post-card__title"
+          className="post-card__title-input"
           placeholder="Title of post"
           onChange={e => handleObjectInputChange(e, setInputValue)}
           value={inputValue.title}
           name="title"
           type="text"
         />
-        <InputAvatar name="post" onInputChange={e => handleObjectInputChange(e, setInputValue)} />
+        <InputAvatar
+          className="post-card__name-input"
+          name="post"
+          onInputChange={e => handleObjectInputChange(e, setInputValue)}
+        />
       </div>
       <section className="post-card__post">
         <div className="post-card__post-icons">
