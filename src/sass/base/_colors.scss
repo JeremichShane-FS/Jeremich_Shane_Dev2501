@@ -21,6 +21,7 @@ $dark-gray-100: #4a4b4c;
 $dark-gray-200: #3a3b3c;
 
 // rgba colors
+$rgba-black-10: rgba($eerie-black, 0.1);
 $rgba-black-90: rgba($eerie-black, 0.9);
 $rgba-white-30: rgba($white, 0.3);
 
@@ -38,8 +39,8 @@ $info-color: #17a2b8;
 // primary color
 $primary-color: $white;
 $secondary-color: $eerie-black;
-$primary-hover-color: $gray-100;
-$secondary-hover-color: $gray-800;
+$primary-hover-color: $gray-800;
+$secondary-hover-color: $gray-100;
 $primary-active-color: $gray-100;
 $secondary-active-color: $gray-800;
 $primary-focus-color: $gray-100;

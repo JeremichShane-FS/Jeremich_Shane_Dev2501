@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
 
-  &__list-item {
+  &__list {
     list-style-type: none;
   }
 }

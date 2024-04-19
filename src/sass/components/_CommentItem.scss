@@ -1,24 +1,23 @@
+@use "../base/" as *;
 @use "../utilities/" as *;
 
 .comment-item {
-  margin-top: 1rem;
+  margin-top: $medium-gap;
 
   &__comment {
-    @include flex-center;
-    align-items: flex-start;
-    margin-bottom: 0.5rem;
+    @include flex-start;
+    margin-bottom: $small-gap;
 
     &__avatar {
-      margin-right: 0.5rem;
+      margin-right: $small-gap;
     }
 
     &__bubble {
-      display: flex;
-      flex-direction: column;
-      padding: 0.5rem;
-      background-color: #4a4b4c;
+      @include flex-column;
+      padding: $small-gap;
+      background-color: $dark-gray-200;
       border-radius: 0.9375rem;
-      font-size: 0.95rem;
+      font-size: $small-font-size;
 
       &__name {
         font-weight: bold;

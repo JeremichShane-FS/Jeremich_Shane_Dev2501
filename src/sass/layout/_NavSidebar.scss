@@ -1,24 +1,25 @@
+@use "../base/" as *;
+@use "../utilities/" as *;
+
 .nav-sidebar {
   &__list-item {
     display: flex;
-    padding: 0.5rem;
-    font-size: 1rem;
-    margin: 0.5rem 0;
+    padding: $small-gap;
+    margin: $small-gap 0;
   }
 
   &__image {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    border: none;
+    @include flex-center;
+    gap: $medium-gap;
     background: none;
-    color: #fff;
+    font-weight: bold;
+    color: $white;
+    border: none;
+    cursor: pointer;
   }
 
   &__icon {
-    margin-right: 1rem;
-    font-size: 2rem;
+    margin-right: $medium-gap;
+    font-size: $large-font-size;
   }
 }

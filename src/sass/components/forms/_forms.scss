@@ -1,10 +1,10 @@
 @use "../../base/" as *;
+@use "../../utilities/" as *;
 
 .input-avatar {
   &__container {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    @include flex-center;
+    gap: $small-gap;
   }
 
   &__input-container {
@@ -13,33 +13,34 @@
   }
 
   &__input {
-    transition: 0.3s;
-    background: #3a3b3c;
-    color: #fff;
+    transition: $transition-time;
+    background: $dark-gray-200;
+    color: $white;
   }
 
   &__icon-container {
+    @include flex-center;
     position: absolute;
-    right: 0.5rem;
+    right: $small-gap;
     top: 50%;
     transform: translateY(-50%);
-    display: flex;
-    align-items: center;
     justify-content: center;
   }
 
   &__icon {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font: {
+      size: $medium-font-size;
+      weight: bold;
+    }
     cursor: pointer;
 
     &--active {
-      color: #84dcc6;
+      color: $tiffany-blue;
       cursor: pointer;
     }
 
     &:not(&--active) {
-      color: #757677;
+      color: $gray-600;
       cursor: not-allowed;
     }
   }
@@ -56,30 +57,30 @@
     border: none;
     outline: none;
     border-radius: 1.25rem;
-    color: #fff;
-    transition: 0.3s;
+    color: $white;
+    transition: $transition-time;
 
     &:focus,
     &:hover {
-      background: #4a4b4c;
-      transform: scale(1.01);
+      background: $dark-gray-100;
+      transform: $transform-scale;
     }
   }
 }
 
 .searchbar {
   &__input {
-    color: #222;
+    color: $eerie-black;
     border: none;
     outline: none;
-    padding: 0.5rem 1.5rem 0.5rem;
+    padding: $small-gap 1.5rem $small-gap;
     width: 100%;
     border-radius: 1.25rem;
 
     &:focus,
     &:hover {
       background: $white;
-      transform: scale(1.01);
+      transform: $transform-scale;
     }
   }
 }

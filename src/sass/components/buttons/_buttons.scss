@@ -1,5 +1,5 @@
-@use "../../utilities" as *;
-@use "../../base/colors" as *;
+@use "../../base/" as *;
+@use "../../utilities/" as *;
 
 .btn-form {
   @include button-style;
@@ -8,7 +8,7 @@
   margin: 0.3125rem;
   border: none;
   border-radius: 0.3125rem;
-  transition: 0.3s;
+  transition: $transition-time;
 
   &--active {
     background-color: $post-active-color;
@@ -24,20 +24,20 @@
 .btn-interaction {
   @include flex-center;
   background: none;
-  color: #fff;
+  color: $white;
   border: none;
-
-  &__icon {
-    margin-right: 0.5rem;
-    font-size: 1.5rem;
-  }
-
-  &__nav-sidebar__icon {
-    margin-right: 1rem;
-    font-size: 2rem;
-  }
 
   &:hover {
     cursor: pointer;
+  }
+
+  &__icon {
+    margin-right: $small-gap;
+    font-size: $medium-font-size;
+  }
+
+  &__nav-sidebar__icon {
+    margin-right: $medium-gap;
+    font-size: $large-font-size;
   }
 }

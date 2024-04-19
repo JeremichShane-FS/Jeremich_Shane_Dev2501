@@ -1,7 +1,9 @@
+@use "../base/" as *;
+
 .footer {
-  background-color: #222;
+  background-color: $eerie-black;
   text-align: center;
-  padding: 1rem;
+  padding: $medium-gap;
   position: fixed;
   bottom: 0;
   width: 100%;

@@ -1,79 +1,81 @@
+@use "../base/" as *;
+@use "../utilities/" as *;
+
 .header {
   display: grid;
   grid-template-columns: 20% 1fr 20%;
-  padding: 1rem;
-  background: #222;
+  padding: $medium-gap;
+  background: $eerie-black;
   width: 100%;
   position: fixed;
   z-index: 1000;
 
   &__logo-container {
-    display: flex;
-    align-items: center;
+    @include flex-center;
 
     &__logo {
       height: 1.5625rem;
-      margin-right: 0.5rem;
+      margin-right: $small-gap;
       cursor: pointer;
     }
 
     &__h1 {
-      font-family: Poppins, sans-serif;
-      font-size: 1.5rem;
-      font-weight: 900;
+      font: {
+        family: $font-family-secondary;
+        size: $medium-font-size;
+        weight: 900;
+      }
       cursor: pointer;
     }
   }
 
   &__search-container {
-    display: flex;
+    @include flex-center;
     justify-content: center;
-    align-items: center;
 
     &__div {
-      background: #fff;
       display: flex;
+      background: $white;
       width: 75%;
       align-items: center;
-      padding-left: 0.5rem;
+      padding-left: $small-gap;
       border-radius: 1.25rem;
     }
   }
 
   &__profile-container {
-    display: flex;
-    justify-content: flex-end;
+    @include flex-end;
     align-items: center;
   }
 
   &__icons {
     margin-right: 1.25rem;
-    font-size: 1.5rem;
+    font-size: $medium-font-size;
     cursor: pointer;
   }
 
   &__status {
     width: 12px;
     height: 12px;
-    border: 2px solid #fff;
+    border: 2px solid $white;
     border-radius: 50%;
     position: absolute;
     right: 0;
     bottom: 0;
     transform: translate(50%, -50%);
-    background-color: #4b4e6d;
+    background-color: $ultra-violet;
 
     &--active {
-      background-color: #30f94b;
+      background-color: $status-active-color;
     }
   }
 
   .search-bar {
-    transition: 0.3s;
+    transition: $transition-time;
 
     &:hover,
     &:active {
-      transform: scale(1.01);
+      transform: $transform-scale;
     }
   }
 
@@ -84,7 +86,7 @@
   }
 
   @media (max-width: 768px) {
-    padding: 0.5rem;
+    padding: $small-gap;
   }
 
   @media (max-width: 680px) {
@@ -94,7 +96,7 @@
     .search-bar {
       grid-column: span 2;
       width: 100%;
-      margin-top: 1rem;
+      margin-top: $medium-gap;
       order: 3;
     }
 

@@ -1,20 +1,24 @@
+@use "../base/" as *;
+@use "../utilities/" as *;
+
 .tooltip {
   position: relative;
   display: inline-block;
   cursor: pointer;
 
   &:hover .tooltip-text {
-    display: block;
+    visibility: visible;
     opacity: 1;
   }
 }
 
 .tooltip-text {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
   width: max-content;
-  background-color: #cacacb;
-  color: #222;
-  font-size: 0.75rem;
+  background-color: $secondary-hover-color;
+  color: $eerie-black;
+  font-size: $xsmall-font-size;
   text-align: center;
   padding: 5px;
   border-radius: 6px;
@@ -23,8 +27,7 @@
   bottom: 125%;
   left: 50%;
   transform: translateX(-50%);
-  opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity $transition-time, visibility $transition-time;
 
   &::after {
     content: "";
@@ -32,8 +35,11 @@
     top: 100%;
     left: 50%;
     margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #3a3b3c transparent transparent transparent;
+
+    border: {
+      width: 5px;
+      style: solid;
+      color: $dark-gray-200 transparent transparent transparent;
+    }
   }
 }

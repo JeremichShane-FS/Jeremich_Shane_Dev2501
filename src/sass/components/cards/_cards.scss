@@ -1,16 +1,17 @@
+@use "../../base/" as *;
 @use "../../utilities/" as *;
 
 .card {
-  background-color: #222;
-  padding: 1rem;
-  margin-bottom: 1rem;
+  background-color: $eerie-black;
+  padding: $medium-gap;
+  margin-bottom: $medium-gap;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px $rgba-black-10;
 }
 
 .ad-card {
   @include flex-center;
-  gap: 1rem;
+  gap: $medium-gap;
 
   &__image {
     width: 6.25rem;
@@ -19,14 +20,13 @@
   }
 
   &__content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    @include flex-column;
+    gap: $small-gap;
   }
 
   &__title,
   &__subtitle {
-    font-size: 0.8rem;
+    font-size: $xsmall-font-size;
   }
 
   &__title {
@@ -37,48 +37,46 @@
 .newsfeed-card {
   &__header-container,
   &__span {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
+    @include flex-between;
+    margin-bottom: $medium-gap;
   }
 
   &__profile {
     @include flex-center;
     justify-content: space-between;
-    margin-bottom: 1rem;
+    margin-bottom: $medium-gap;
   }
 
   &__profile {
-    margin-bottom: 1rem;
+    margin-bottom: $medium-gap;
 
     &__picture {
-      margin-right: 1rem;
+      margin-right: $medium-gap;
     }
 
     &__user-info {
-      display: flex;
-      flex-direction: column;
+      @include flex-column;
       justify-content: center;
       font-weight: bold;
 
       &__timestamp {
-        font-size: 0.8rem;
+        font-size: $xsmall-font-size;
         font-weight: normal;
       }
     }
   }
 
   &__post-content {
-    margin-bottom: 1rem;
+    margin-bottom: $medium-gap;
 
     p {
-      margin-bottom: 1rem;
+      margin-bottom: $medium-gap;
     }
   }
 
   &__post-image {
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: $medium-gap;
     border-radius: 8px;
   }
 
@@ -86,19 +84,18 @@
     &__social {
       @include flex-center;
       justify-content: space-between;
-      font-size: 0.9rem;
+      font-size: $small-font-size;
     }
   }
 
   &__interaction {
-    display: flex;
-    justify-content: space-around;
-    gap: 1rem;
+    @include flex-around;
+    gap: $medium-gap;
     font-weight: bold;
-    margin: 1rem 0;
-    padding: 0.5rem;
-    border-top: 1px solid #4a4b4c;
-    border-bottom: 1px solid #4a4b4c;
+    margin: $medium-gap 0;
+    padding: $small-gap;
+    border-top: 1px solid $dark-gray-100;
+    border-bottom: 1px solid $dark-gray-100;
 
     &__button {
       @include flex-center;
@@ -106,18 +103,17 @@
       border: none;
       background: none;
       padding: 0;
-      font-size: 1rem;
-      color: #fff;
+      color: $white;
     }
 
     &__icon {
-      margin-right: 0.5rem;
-      font-size: 1.5rem;
+      margin-right: $small-gap;
+      font-size: $medium-font-size;
     }
   }
 
   &__comment-input {
-    margin-top: 1rem;
+    margin-top: $medium-gap;
   }
 }
 
@@ -127,13 +123,13 @@
     grid-template-columns: 3.625rem auto;
     grid-template-rows: 1fr 1fr;
     grid-template-areas: "null title" "name name";
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #4a4b4c;
+    padding-bottom: $medium-gap;
+    border-bottom: 1px solid $gray-700;
   }
 
   &__title-input {
-    background-color: #3a3b3c;
-    margin: 0 auto 1rem;
+    background-color: $dark-gray-200;
+    margin: 0 auto $medium-gap;
     grid-area: title;
   }
 
@@ -142,32 +138,29 @@
   }
 
   &__post {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
+    @include flex-between;
+    margin-top: $medium-gap;
   }
 
   &__post-icons {
-    display: flex;
-    align-items: center;
+    @include flex-center;
     gap: 2rem;
-    padding: 0 1rem;
+    padding: 0 $medium-gap;
     font-weight: bold;
   }
 
   &__icon-list {
     display: flex;
     list-style: none;
-    font-size: 2.5rem;
+    font-size: $xlarge-font-size;
     height: max-content;
   }
 
   &__list-item {
-    display: flex;
-    align-items: center;
+    @include flex-center;
     justify-content: center;
     border-radius: 50%;
-    transition: background 0.3s ease;
+    transition: background $transition-time ease;
   }
 
   &__icon {
@@ -175,7 +168,7 @@
   }
 
   &__post-icons-text {
-    font-size: 0.9rem;
+    font-size: $small-font-size;
     @media (max-width: 1380px) {
       display: none;
     }
