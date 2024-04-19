@@ -3,10 +3,11 @@ import { BsEmojiLaughing } from "react-icons/bs";
 import { FaPhotoVideo, FaUserTag } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { HiGif } from "react-icons/hi2";
+import { userProfile } from "../../constants/userProfile";
 import { handleObjectInputChange } from "../../utils/handleInputChange";
+import Avatar from "../Avatar";
 import Tooltip from "../Tooltip";
 import FormButton from "../buttons/FormButton";
-import InputAvatar from "../forms/InputAvatar";
 import InputField from "../forms/InputField";
 import Card from "./Card";
 
@@ -14,23 +15,44 @@ const PostCard = () => {
   const [inputValue, setInputValue] = useState({ title: "", post: "" });
 
   // TODO: Will remove input for Title of post in the future, but for now, it's required
+  /**
+   * first
+   */
 
   return (
     <Card>
       <div className="post-card__inputs-container">
+        <Avatar
+          img={userProfile.img}
+          className="post-card__avatar"
+          width="3.125rem"
+          height="3.125rem"
+        />
         <InputField
           className="post-card__title-input"
+          type="text"
+          name="title"
           placeholder="Title of post"
           onChange={e => handleObjectInputChange(e, setInputValue)}
           value={inputValue.title}
-          name="title"
-          type="text"
         />
-        <InputAvatar
+        <InputField
+          className="post-card__post-input"
+          type="text"
+          name="post"
+          placeholder={`What's on your mind, ${userProfile.firstName}?`}
+          onChange={e => handleObjectInputChange(e, setInputValue)}
+          value={inputValue.post}
+        />
+
+        {/**
+         * Keeping this here for later functionality
+         */}
+        {/* <InputAvatar
           className="post-card__name-input"
           name="post"
           onInputChange={e => handleObjectInputChange(e, setInputValue)}
-        />
+        /> */}
       </div>
       <section className="post-card__post">
         <div className="post-card__post-icons">

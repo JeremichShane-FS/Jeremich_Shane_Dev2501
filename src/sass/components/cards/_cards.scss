@@ -118,9 +118,13 @@
     display: grid;
     grid-template-columns: 3.625rem auto;
     grid-template-rows: 1fr 1fr;
-    grid-template-areas: "null title" "name name";
+    grid-template-areas: "avatar title" "null post";
     padding-bottom: $medium-gap;
     border-bottom: 1px solid $gray-700;
+  }
+
+  &__avatar {
+    grid-area: avatar;
   }
 
   &__title-input {
@@ -129,8 +133,10 @@
     grid-area: title;
   }
 
-  &__name-input {
-    grid-area: name;
+  &__post-input {
+    background-color: $dark-gray-200;
+    grid-area: post;
+    height: 2.5rem;
   }
 
   &__post {
