@@ -12,7 +12,7 @@
   &__image {
     width: 6.25rem;
     height: 6.25rem;
-    border-radius: 5px;
+    border-radius: $small-border-radius;
   }
 
   &__content {
@@ -64,6 +64,7 @@
 
   &__post-content {
     margin-bottom: $medium-gap;
+    word-wrap: break-word;
 
     p {
       margin-bottom: $medium-gap;
@@ -73,7 +74,7 @@
   &__post-image {
     width: 100%;
     margin-bottom: $medium-gap;
-    border-radius: 8px;
+    border-radius: $small-border-radius;
   }
 
   &__post-footer {
@@ -114,13 +115,57 @@
 }
 
 .post-card {
+  &__header {
+    @include flex-between;
+    align-items: center;
+    margin-bottom: $large-gap;
+    padding-bottom: $large-gap;
+    border-bottom: 1px solid $gray-800;
+
+    &__title {
+      @include flex-center;
+      flex-direction: column;
+      font-size: $heading-5-size;
+      font-weight: bold;
+    }
+
+    &--remove {
+      @include flex-center;
+      justify-content: center;
+      background-color: $dark-gray-100;
+      font-size: $medium-font-size;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      border: none;
+      outline: none;
+      transition: all $transition-time;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $gray-800;
+      }
+    }
+
+    &::before {
+      content: "";
+      width: same-as-span;
+    }
+  }
+
   &__inputs-container {
     display: grid;
     grid-template-columns: 3.625rem auto;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: "avatar title" "null post";
+    grid-template-rows: auto 15px auto 15px;
+    grid-template-areas:
+      "avatar title"
+      "error1 error1"
+      "post post"
+      "error error";
+    max-height: 70vh; /* adjust as needed */
+    // overflow: auto;
     padding-bottom: $medium-gap;
-    border-bottom: 1px solid $gray-700;
+    border-bottom: 1px solid $gray-800;
   }
 
   &__avatar {
@@ -133,46 +178,53 @@
     grid-area: title;
   }
 
-  &__post-input {
-    background-color: $dark-gray-200;
-    grid-area: post;
-    height: 2.5rem;
-  }
-
   &__post {
-    @include flex-between;
     margin-top: $medium-gap;
-  }
 
-  &__post-icons {
-    @include flex-center;
-    gap: 2rem;
-    padding: 0 $medium-gap;
-    font-weight: bold;
-  }
+    &-icons {
+      @include flex-center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 0 $medium-gap;
+      font-weight: bold;
 
-  &__icon-list {
-    display: flex;
-    list-style: none;
-    font-size: $xlarge-font-size;
-    height: max-content;
+      @media (max-width: 1380px) {
+        justify-content: center;
+      }
+    }
+
+    &-icons-text {
+      font-size: $small-font-size;
+      @media (max-width: 1380px) {
+        display: none;
+      }
+    }
   }
 
   &__list-item {
     @include flex-center;
     justify-content: center;
-    border-radius: 50%;
+    border-radius: $img-border-radius;
     transition: background $transition-time ease;
   }
 
   &__icon {
     padding: 5px;
+
+    &-list {
+      display: flex;
+      list-style: none;
+      font-size: $xlarge-font-size;
+      height: max-content;
+      margin-bottom: $medium-gap;
+    }
   }
 
-  &__post-icons-text {
+  &__error {
+    height: 0.9375rem;
+    color: $error-color;
     font-size: $small-font-size;
-    @media (max-width: 1380px) {
-      display: none;
-    }
+    text-align: center;
+    grid-area: error;
   }
 }

@@ -13,7 +13,7 @@ import InputAvatar from "../forms/InputAvatar";
 import Card from "./Card";
 
 const NewsfeedCard = ({
-  post: { timestamp, content, image_url, likes, comments },
+  post: { timestamp, title, content, image_url, likes, comments },
   user: { profile_picture, name },
   users,
 }) => {
@@ -61,6 +61,7 @@ const NewsfeedCard = ({
         </span>
       </div>
       <div className="newsfeed-card__post-content">
+        {title && <h4 className="newsfeed-card__post-title">{title}</h4>}
         <p className="newsfeed-card__post-content p">{content}</p>
         {image_url && (
           <picture>

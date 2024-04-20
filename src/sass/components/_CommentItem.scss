@@ -16,7 +16,7 @@
       @include flex-column;
       padding: $small-gap;
       background-color: $dark-gray-200;
-      border-radius: 0.9375rem;
+      border-radius: $large-border-radius;
       font-size: $small-font-size;
 
       &__name {

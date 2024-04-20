@@ -2,20 +2,6 @@
 
 $aside-width: 22rem;
 
-.main {
-  display: grid;
-  grid-template-columns: auto 3fr auto;
-  gap: $medium-gap;
-  min-height: max-content;
-  overflow-y: auto;
-  padding: 6.25rem 0 3.75rem;
-}
-
-.pages {
-  max-width: 42.5rem;
-  margin: 0 auto;
-}
-
 .aside-container {
   width: $aside-width;
 }

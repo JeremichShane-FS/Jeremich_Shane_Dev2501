@@ -3,8 +3,19 @@ export const handleSingleInputChange = (e, setState) => {
 };
 
 export const handleObjectInputChange = (e, setInputValue) => {
+  const { name, value } = e.target;
   setInputValue(prevState => ({
     ...prevState,
-    [e.target.name]: e.target.value,
+    [name]: value,
+  }));
+};
+
+export const handleClassObjectInputChange = (e, component) => {
+  const { name, value } = e.target;
+  component.setState(prevState => ({
+    inputValue: {
+      ...prevState.inputValue,
+      [name]: value,
+    },
   }));
 };

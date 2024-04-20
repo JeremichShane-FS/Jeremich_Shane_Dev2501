@@ -21,9 +21,9 @@
   font-size: $xsmall-font-size;
   text-align: center;
   padding: 5px;
-  border-radius: 6px;
+  border-radius: $small-border-radius;
   position: absolute;
-  z-index: 2;
+  z-index: $tooltip-z-index;
   bottom: 125%;
   left: 50%;
   transform: translateX(-50%);

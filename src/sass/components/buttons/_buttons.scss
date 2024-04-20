@@ -3,11 +3,11 @@
 
 .btn-form {
   @include button-style;
-  width: 9.375rem;
+  width: 100%;
   background: $dark-gray-200;
   margin: 0.3125rem;
   border: none;
-  border-radius: 0.3125rem;
+  border-radius: $small-border-radius;
   transition: $transition-time;
 
   &--active {

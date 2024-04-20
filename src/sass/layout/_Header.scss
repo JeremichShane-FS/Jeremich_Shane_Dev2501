@@ -8,7 +8,7 @@
   padding: $medium-gap;
   background: $eerie-black;
   position: fixed;
-  z-index: 1000;
+  z-index: $header-z-index;
 
   &__logo-container {
     @include flex-center;
@@ -38,7 +38,7 @@
       align-items: center;
       width: 75%;
       padding-left: $small-gap;
-      border-radius: 1.25rem;
+      border-radius: $input-border-radius;
       background: $white;
     }
   }
@@ -58,7 +58,7 @@
     width: 12px;
     height: 12px;
     border: 2px solid $white;
-    border-radius: 50%;
+    border-radius: $img-border-radius;
     position: absolute;
     right: 0;
     bottom: 0;

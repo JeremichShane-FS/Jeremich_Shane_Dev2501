@@ -1,4 +1,6 @@
-@use "../base/" as *;
+@use "../base/colors" as *;
+@use "../base/typography" as *;
+@use "variables" as *;
 
 @mixin flex-center {
   display: flex;
@@ -39,6 +41,6 @@
   background-color: $eerie-black;
   padding: $medium-gap;
   margin-bottom: $medium-gap;
-  border-radius: 5px;
+  border-radius: $small-border-radius;
   box-shadow: 0 0 10px $rgba-black-10;
 }

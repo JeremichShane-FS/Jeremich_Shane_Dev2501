@@ -90,5 +90,10 @@ export const mockUsers = {
       profile_picture: "https://randomuser.me/api/portraits/men/15.jpg",
       location: "Columbus, OH",
     },
+    {
+      id: "user16",
+      name: "Emily Doe",
+      profile_picture: "https://randomuser.me/api/portraits/thumb/women/19.jpg",
+    },
   ],
 };

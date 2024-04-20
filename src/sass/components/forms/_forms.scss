@@ -56,7 +56,7 @@
     padding: 0.625rem 0.9375rem;
     border: none;
     outline: none;
-    border-radius: 1.25rem;
+    border-radius: $input-border-radius;
     color: $white;
     transition: $transition-time;
 
@@ -75,7 +75,7 @@
     outline: none;
     padding: $small-gap 1.5rem $small-gap;
     width: 100%;
-    border-radius: 1.25rem;
+    border-radius: $input-border-radius;
 
     &:focus,
     &:hover {

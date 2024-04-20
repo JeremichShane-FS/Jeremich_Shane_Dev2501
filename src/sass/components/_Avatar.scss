@@ -1,7 +1,8 @@
 @use "../base/" as *;
+@use "../utilities/" as *;
 
 .avatar {
-  border-radius: 50%;
+  border-radius: $img-border-radius;
   position: relative;
   cursor: pointer;
   width: 3.125rem;
