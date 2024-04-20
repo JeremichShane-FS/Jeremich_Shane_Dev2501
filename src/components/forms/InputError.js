@@ -2,7 +2,7 @@ const InputError = ({ errors, property }) => {
   return (
     <>
       {errors[property] && (
-        <div role="alert" className="post-card__error">
+        <div role="alert" className="input-error">
           {errors[property]}
         </div>
       )}

@@ -18,17 +18,11 @@ const CreatePostModal = ({
   isFormValid,
   textareaHeight,
 }) => {
-  console.log(textareaHeight);
   return (
     <Modal
-      isOpen={isModalOpen}
-      onRequestClose={hideModal}
-      contentLabel="Create Post Modal"
-      ariaHideApp={false}
+      // props
       className="create-post-modal"
-      overlayClassName="create-post-modal__overlay"
-      closeTimeoutMS={200}
-      shouldCloseOnOverlayClick={true}>
+      overlayClassName="create-post-modal__overlay">
       <form onSubmit={handleSubmit} className="create-post-modal__form">
         <header className="create-post-modal__header">
           <h5 className="create-post-modal__title">Create Post</h5>
@@ -41,36 +35,27 @@ const CreatePostModal = ({
           <div>
             <InputField
               className="create-post-modal__title-input"
-              type="text"
-              name="title"
-              maxLength={51}
-              placeholder="Title of post"
-              onChange={handleInputChange}
-              value={inputValue.title}
+              // props
             />
-            <InputError errors={errors} property="title" />
+            <InputError errors={errors} property="title" className="create-post-modal__error" />
           </div>
           <textarea
             className={`create-post-modal__textarea ${
               inputValue.post.length <= 80
-                ? "create-post-modal__textarea--large-text"
-                : "create-post-modal__textarea--small-text"
+                ? "create-post-modal__textarea--large"
+                : "create-post-modal__textarea--small"
             }`}
-            name="post"
-            maxLength={1001}
-            placeholder={`What's on your mind, ${firstName}?`}
-            onChange={handleInputChange}
-            value={inputValue.post}
-            style={{ height: textareaHeight }}
+            // props
           />
-          <InputError errors={errors} property="post" />
+          <InputError errors={errors} property="post" className="create-post-modal__error" />
         </div>
-        <PostEnhancements />
+        <PostEnhancements className="create-post-modal__enhancements" />
         <FormButton
-          className={`btn-form ${isFormValid ? " btn-form--active" : ""}`}
-          aria-disabled={!isFormValid}
-          disabled={!isFormValid}
-          type="submit">
+          className={`create-post-modal__submit ${
+            isFormValid ? " create-post-modal__submit--active" : ""
+          }`}
+          // props
+        >
           Post
         </FormButton>
       </form>

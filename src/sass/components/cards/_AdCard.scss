@@ -1,0 +1,27 @@
+@use "../../utilities/" as *;
+@use "../../base/" as *;
+
+.ad-card {
+  @include flex-center;
+  gap: $medium-gap;
+
+  &__image {
+    width: 6.25rem;
+    height: 6.25rem;
+    border-radius: $small-border-radius;
+  }
+
+  &__content {
+    @include flex-column;
+    gap: $small-gap;
+  }
+
+  &__title,
+  &__subtitle {
+    font-size: $xsmall-font-size;
+  }
+
+  &__title {
+    font-weight: bold;
+  }
+}

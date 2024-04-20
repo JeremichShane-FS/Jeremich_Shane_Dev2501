@@ -1,0 +1,19 @@
+@use "../../base/" as *;
+@use "../../utilities/" as *;
+
+.searchbar {
+  &__input {
+    color: $eerie-black;
+    border: none;
+    outline: none;
+    padding: $small-gap 1.5rem $small-gap;
+    width: 100%;
+    border-radius: $input-border-radius;
+
+    &:focus,
+    &:hover {
+      background: $white;
+      transform: $transform-scale;
+    }
+  }
+}

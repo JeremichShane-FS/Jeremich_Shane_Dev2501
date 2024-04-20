@@ -3,6 +3,7 @@ const InputField = ({
   value = "",
   label = "",
   name = "",
+  maxLength,
   placeholder = "",
   type = "text",
   onChange = () => {},
@@ -12,6 +13,7 @@ const InputField = ({
       type={type}
       value={value}
       name={name}
+      maxLength={maxLength}
       placeholder={placeholder}
       onChange={onChange}
       className={`inputfield__input${className ? ` ${className}` : ""}`}
@@ -23,6 +25,7 @@ const InputField = ({
         type={type}
         value={value}
         name={name}
+        maxLength={maxLength}
         placeholder={placeholder}
         onChange={onChange}
         className={`inputfield__input${className ? ` ${className}` : ""}`}

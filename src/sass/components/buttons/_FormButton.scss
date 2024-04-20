@@ -1,0 +1,22 @@
+@use "../../base/" as *;
+@use "../../utilities/" as *;
+
+.btn-form {
+  @include button-style;
+  width: 100%;
+  background: $dark-gray-200;
+  margin: 0.3125rem;
+  border: none;
+  border-radius: $small-border-radius;
+  transition: $transition-time;
+
+  &--active {
+    background-color: $post-active-color;
+    color: inherit;
+  }
+
+  &:not(&--active) {
+    cursor: not-allowed;
+    color: $gray-600;
+  }
+}

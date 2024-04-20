@@ -1,0 +1,44 @@
+@use "../base/" as *;
+@use "../utilities/" as *;
+
+.post-enhancements {
+  margin-top: $medium-gap;
+
+  &__icons {
+    @include flex-center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 0 $medium-gap;
+    font-weight: bold;
+
+    @media (max-width: 1380px) {
+      justify-content: center;
+    }
+  }
+
+  &__icons-text {
+    font-size: $small-font-size;
+    @media (max-width: 1380px) {
+      display: none;
+    }
+  }
+
+  &__icon-list {
+    display: flex;
+    list-style: none;
+    font-size: $xlarge-font-size;
+    height: max-content;
+    margin-bottom: $medium-gap;
+  }
+
+  &__list-item {
+    @include flex-center;
+    justify-content: center;
+    border-radius: $img-border-radius;
+    transition: background $transition-time ease;
+  }
+
+  &__icon {
+    padding: 5px;
+  }
+}

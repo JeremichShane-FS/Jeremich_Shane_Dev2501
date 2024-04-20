@@ -1,0 +1,10 @@
+@use "../../base/" as *;
+@use "../../utilities/" as *;
+
+.input-error {
+  height: 0.9375rem;
+  color: $error-color;
+  font-size: $small-font-size;
+  text-align: center;
+  grid-area: error;
+}
