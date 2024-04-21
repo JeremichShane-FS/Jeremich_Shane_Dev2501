@@ -1,11 +1,17 @@
 @use "../base/" as *;
 @use "../utilities/" as *;
 
-.nav-sidebar {
+.navsidebar {
+  &__list {
+    @include link-margin;
+  }
   &__list-item {
     display: flex;
     padding: $small-gap;
     margin: $small-gap 0;
+    border-radius: $small-border-radius;
+
+    @include link-hover;
   }
 
   &__image {

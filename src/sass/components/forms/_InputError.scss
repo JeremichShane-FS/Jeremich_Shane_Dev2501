@@ -2,9 +2,19 @@
 @use "../../utilities/" as *;
 
 .input-error {
-  height: 0.9375rem;
+  height: 20px;
+  height: max-content;
   color: $error-color;
   font-size: $small-font-size;
   text-align: center;
-  grid-area: error;
+}
+
+.input-error--title {
+  margin-bottom: 0.5rem;
+  grid-area: error-title;
+}
+
+.input-error--post {
+  margin-top: 0.5rem;
+  grid-area: error-post;
 }

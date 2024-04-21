@@ -2,6 +2,8 @@
 @use "../../utilities/" as *;
 
 .newsfeed-card {
+  background: $eerie-black;
+
   &__header-container,
   &__span {
     @include flex-between;

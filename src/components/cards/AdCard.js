@@ -8,7 +8,7 @@ const AdCard = ({ ad }) => {
   const { id, url, image, title, description } = ad;
 
   return (
-    <Card>
+    <Card color="transparent">
       <a href={url} target="_blank" rel="noreferrer" key={id}>
         <div className="ad-card">
           <img src={image} alt={title} className="ad-card__image" />

@@ -38,9 +38,19 @@
 }
 
 @mixin card-style {
-  background-color: $eerie-black;
+  // background-color: $eerie-black;
   padding: $medium-gap;
   margin-bottom: $medium-gap;
   border-radius: $small-border-radius;
   box-shadow: 0 0 10px $rgba-black-10;
+}
+@mixin link-margin {
+  margin: 1rem 0.5rem 0;
+}
+
+@mixin link-hover {
+  &:hover {
+    background: $dark-gray-100;
+    cursor: pointer;
+  }
 }

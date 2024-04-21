@@ -6,24 +6,24 @@ const NavSidebar = () => {
   const { firstName, lastName, img } = userProfile;
 
   return (
-    <nav role="navigation" className="nav-sidebar">
-      <ul>
-        <li className="nav-sidebar__list-item">
-          <button className="nav-sidebar__image">
+    <nav role="navigation" className="navsidebar">
+      <ul className="navsidebar__list">
+        <li className="navsidebar__list-item">
+          <button className="navsidebar__image">
             <Avatar img={img} height="2rem" width="2rem" />
             {firstName} {lastName}
           </button>
         </li>
         {navSidebar.map(({ icon: Icon, color, label, component: Component }, index) => {
           return (
-            <li key={index} className="nav-sidebar__list-item">
+            <li key={index} className="navsidebar__list-item">
               <Component
                 icon={Icon}
                 color={color}
                 text={label}
                 aria={`Navigate to ${label}`}
                 className="btn-interaction"
-                classIcon="btn-interaction__nav-sidebar__icon nav-sidebar__icon"
+                classIcon="btn-interaction__navsidebar__icon navsidebar__icon"
               />
             </li>
           );

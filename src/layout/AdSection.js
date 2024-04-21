@@ -8,7 +8,7 @@ export default class AdSection extends Component {
       <section className="ad-section">
         <ul className="ad-section__list">
           {mockAds.map(ad => (
-            <li key={ad.id}>
+            <li key={ad.id} className="ad-section__list-item">
               <AdCard ad={ad} />
             </li>
           ))}

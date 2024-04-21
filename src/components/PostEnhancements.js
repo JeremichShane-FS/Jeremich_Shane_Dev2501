@@ -12,7 +12,11 @@ const PostEnhancements = () => {
         <ul className="post-enhancements__icon-list">
           <li className="post-enhancements__list-item">
             <Tooltip text="Photo/Video">
-              <FaPhotoVideo color="#58C472" className="post-enhancements__icon" />
+              <FaPhotoVideo
+                color="#58C472"
+                className="post-enhancements__icon"
+                title="Add a photo/video"
+              />
             </Tooltip>
           </li>
           <li className="post-enhancements__list-item">

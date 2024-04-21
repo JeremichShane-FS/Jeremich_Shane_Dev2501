@@ -7,15 +7,18 @@ import InputField from "./InputField";
 
 const InputAvatar = ({
   onInputChange,
-  placeholder,
+  onClick,
   showIcon,
   width = "3.125rem",
   height = "3.125rem",
-  name,
   className = "",
+  style,
+  name,
+  placeholder,
+  type,
 }) => {
   const { firstName } = userProfile;
-  placeholder = placeholder || `What's on your mind, ${firstName}?`;
+  placeholder = placeholder !== "" ? placeholder : `What's on your mind, ${firstName}?`;
   const [inputValue, setInputValue] = useState("");
 
   const handleChange = e => {
@@ -34,12 +37,14 @@ const InputAvatar = ({
       <Avatar img={userProfile.img} height={height} width={width} />
       <div className="input-avatar__input-container">
         <InputField
-          type="text"
+          type={type}
           name={name}
           placeholder={placeholder}
           value={inputValue}
           onChange={handleChange}
+          onClick={onClick}
           className="input-avatar__input"
+          style={style}
         />
         {showIcon && (
           <div className="input-avatar__icon-container">

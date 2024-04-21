@@ -42,3 +42,11 @@ body {
   max-width: 42.5rem;
   margin: 0 auto;
 }
+
+.truncate {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  padding: 0;
+}

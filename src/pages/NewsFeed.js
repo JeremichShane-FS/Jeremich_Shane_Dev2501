@@ -19,7 +19,6 @@ export default class Newsfeed extends Component {
       post: "",
     },
     isModalOpen: false,
-    textareaHeight: "inherit",
   };
 
   showModal = () => {
@@ -37,7 +36,6 @@ export default class Newsfeed extends Component {
     const target = e.target;
     target.style.height = "inherit";
     target.style.height = `${target.scrollHeight}px`;
-    this.setState({ textareaHeight: `${target.scrollHeight}px` });
 
     let titleNum = 50;
     let postNum = 1000;
@@ -97,7 +95,6 @@ export default class Newsfeed extends Component {
     const { posts, users, inputValue, errors, isModalOpen, textareaHeight } = this.state;
     const { findUserForPost, handleInputChange, addPost, resetForm, showModal, hideModal } = this;
     const sortedPosts = [...posts].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-    console.log(textareaHeight);
 
     return (
       <>

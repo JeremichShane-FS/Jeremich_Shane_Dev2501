@@ -1,14 +1,16 @@
 const InputField = ({
   className,
-  value = "",
-  label = "",
-  name = "",
+  style,
+  value,
+  label,
+  name,
   maxLength,
-  placeholder = "",
+  placeholder,
   type = "text",
   onChange = () => {},
+  onClick = () => {},
 }) => {
-  return !label ? (
+  const inputElement = (
     <input
       type={type}
       value={value}
@@ -17,19 +19,30 @@ const InputField = ({
       placeholder={placeholder}
       onChange={onChange}
       className={`inputfield__input${className ? ` ${className}` : ""}`}
+      style={style}
     />
+  );
+
+  const buttonElement = (
+    <div
+      name={name}
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+      className={`inputfield__input${className ? ` ${className}` : ""}`}
+      style={style}>
+      <span className="truncate">{placeholder}</span>
+    </div>
+  );
+
+  const element = type === "button" ? buttonElement : inputElement;
+
+  return !label ? (
+    element
   ) : (
     <div className="inputfield__div">
       <label htmlFor={name}>{label}</label>
-      <input
-        type={type}
-        value={value}
-        name={name}
-        maxLength={maxLength}
-        placeholder={placeholder}
-        onChange={onChange}
-        className={`inputfield__input${className ? ` ${className}` : ""}`}
-      />
+      {element}
     </div>
   );
 };

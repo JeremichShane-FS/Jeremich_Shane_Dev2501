@@ -1,0 +1,35 @@
+@use "../base/" as *;
+@use "../utilities/" as *;
+
+.create-post-card {
+  &__icons {
+    @include flex-center;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid $gray-800;
+  }
+
+  &__icon {
+    margin-right: 1rem;
+    font-size: $medium-font-size;
+    color: $gray-500;
+  }
+
+  &__span {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    padding: 0.625rem 0;
+    font-size: $small-font-size;
+    font-weight: bold;
+    border-radius: $small-border-radius;
+    color: $gray-500;
+    cursor: pointer;
+
+    &:hover {
+      background: $dark-gray-100;
+    }
+  }
+}

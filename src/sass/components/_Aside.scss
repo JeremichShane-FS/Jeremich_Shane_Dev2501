@@ -1,4 +1,5 @@
 @use "../base/" as *;
+@use "../utilities/" as *;
 
 $aside-width: 22rem;
 
@@ -14,13 +15,17 @@ $aside-width: 22rem;
   overflow-y: auto;
   overflow-x: hidden;
   margin: 0 auto;
-  background-color: $eerie-black;
+  background: $eerie-black;
 
   &.left {
     left: 0;
+    border-top-right-radius: $large-border-radius;
+    border-bottom-right-radius: $large-border-radius;
   }
 
   &.right {
     right: 0;
+    border-top-left-radius: $large-border-radius;
+    border-bottom-left-radius: $large-border-radius;
   }
 }

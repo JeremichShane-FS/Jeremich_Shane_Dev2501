@@ -8,17 +8,30 @@
 
   &__input {
     width: 100%;
+    max-height: 63px;
     padding: 0.625rem 0.9375rem;
     border: none;
     outline: none;
     border-radius: $input-border-radius;
     color: $white;
+    word-break: break-word;
     transition: $transition-time;
 
-    &:focus,
-    &:hover {
+    input:not(.search_input):focus,
+    input:not(.search_input):hover {
       background: $dark-gray-100;
       transform: $transform-scale;
     }
+  }
+}
+
+button.inputfield__input {
+  text-align: left;
+  color: $gray-500;
+  cursor: pointer;
+
+  &:hover {
+    background: $dark-gray-100;
+    transform: $transform-scale;
   }
 }

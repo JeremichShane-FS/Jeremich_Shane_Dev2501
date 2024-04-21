@@ -1,8 +1,17 @@
+@use "../base/" as *;
+@use "../utilities/" as *;
+
 .ad-section {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
 
   &__list {
     list-style-type: none;
+    @include link-margin;
+
+    &-item {
+      @include link-hover;
+      border-radius: $small-border-radius;
+    }
   }
 }
