@@ -19,9 +19,15 @@ const Header = ({ title }) => {
         </div>
       </section>
       <section className="header__profile-container">
-        <FaBell className="header__icons" aria-label="notifications" />
-        <FaEnvelope className="header__icons" aria-label="messages" />
-        <IoSettings className="header__icons" aria-label="settings" />
+        <span className="header__profile__span">
+          <FaBell className="header__icon" aria-label="notifications" />
+        </span>
+        <span className="header__profile__span">
+          <FaEnvelope className="header__icon" aria-label="messages" />
+        </span>
+        <span className="header__profile__span">
+          <IoSettings className="header__icon" aria-label="settings" />
+        </span>
         <Avatar img={userProfile.img} border>
           <span
             className={`header__status ${

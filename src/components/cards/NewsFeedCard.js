@@ -61,8 +61,7 @@ const NewsfeedCard = ({
         </span>
       </div>
       <div className="newsfeed-card__post-content">
-        {title && <h4 className="newsfeed-card__post-title">{title}</h4>}
-        <p className="newsfeed-card__post-content p">{content}</p>
+        <p className="newsfeed-card__post-content p">{`${title} ${content}`}</p>
         {image_url && (
           <picture>
             <source srcSet={image_url} media="(min-width: 768px)" />

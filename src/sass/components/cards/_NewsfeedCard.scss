@@ -53,27 +53,34 @@
   &__post-footer {
     &__social {
       @include flex-center;
+
       justify-content: space-between;
       font-size: $small-font-size;
     }
   }
 
   &__interaction {
-    @include flex-around;
-    gap: $medium-gap;
+    @include flex-center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.5rem 0;
     font-weight: bold;
-    margin: $medium-gap 0;
-    padding: $small-gap;
     border-top: 1px solid $dark-gray-100;
     border-bottom: 1px solid $dark-gray-100;
 
     &__button {
       @include flex-center;
+      justify-content: center;
+      flex: 1;
       cursor: pointer;
       border: none;
+      border-radius: $xsmall-border-radius;
       background: none;
-      padding: 0;
+      padding: 0.5rem 0;
       color: $white;
+
+      @include link-hover;
     }
 
     &__icon {
