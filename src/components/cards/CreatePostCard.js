@@ -7,25 +7,14 @@ const PostCard = ({
   profile: { img, firstName },
   handleInputChange,
   inputValue,
-  handleAddPost,
-  resetForm,
   errors,
   showModal,
   hideModal,
   isModalOpen,
   textareaHeight,
+  editPostId,
+  handleSubmit,
 }) => {
-  const handleSubmit = async e => {
-    e.preventDefault();
-    if (inputValue.title.trim().length > 0 && inputValue.post.trim().length > 0) {
-      await handleAddPost(inputValue.title, inputValue.post);
-    } else {
-      console.error("Validation failed: Title and post content are required.");
-    }
-    resetForm();
-    hideModal();
-  };
-
   const { title, post } = inputValue;
   const isFormValid = title?.trim() && post?.trim();
   let placeholder = `${inputValue.title ? inputValue.title.trim() : ""} ${
@@ -38,6 +27,7 @@ const PostCard = ({
       <CreatePostIcons />
       <CreatePostModal
         handleInputChange={handleInputChange}
+        editPostId={editPostId}
         handleSubmit={handleSubmit}
         isFormValid={isFormValid}
         isModalOpen={isModalOpen}

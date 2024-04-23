@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
 import CreatePostCard from "../components/cards/CreatePostCard";
-import NewsfeedCard from "../components/cards/NewsfeedCard";
+import NewsfeedCard from "../components/cards/NewsfeedCard1";
 import { userProfile } from "../constants/userProfile";
 import { mockPosts } from "../data/mockPosts";
 import { mockUsers } from "../data/mockUsers";
@@ -73,28 +73,15 @@ export default class Newsfeed extends Component {
     }));
   };
 
-  handleAddPost = (title, postContent) => {
-    this.setState(prevState => ({
-      posts: [
-        ...prevState.posts,
-        {
-          id: uuidv4(),
-          userId: userProfile.id,
-          timestamp: new Date().toISOString(),
-          title: title,
-          content: postContent,
-          image_url: "https://source.unsplash.com/random",
-          likes: 0,
-          comments: [],
-        },
-      ],
-    }));
-  };
-
   handleEditPost = postId => {
     const postToEdit = this.state.posts.find(post => post.id === postId);
 
-    this.setState({
+    this.setState(prevState => ({
+      posts: prevState.posts.map(post =>
+        post.id === postId
+          ? { ...post, title: postToEdit.title, content: postToEdit.content }
+          : post
+      ),
       inputValue: {
         title: postToEdit.title,
         post: postToEdit.content,
@@ -102,14 +89,52 @@ export default class Newsfeed extends Component {
         // do not have logic for image yet
       },
       editPostId: postId,
-    });
-
-    this.setState({ isModalOpen: true });
+      isModalOpen: true,
+    }));
   };
 
   handleDeletePost = postId => {
     const updatedPosts = this.state.posts.filter(post => post.id !== postId);
     this.setState({ posts: updatedPosts });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    const newPost = {
+      id: this.state.editPostId || uuidv4(),
+      title: this.state.inputValue.title,
+      content: this.state.inputValue.post,
+      image_url: "https://source.unsplash.com/random",
+      userId: this.state.currentUser.id, // Add the current user's ID
+      comments: [], // Initialize comments as an empty array
+      // img: this.state.inputValue.img,
+    };
+
+    if (this.state.editPostId) {
+      // In edit mode, update the existing post
+      this.setState(prevState => ({
+        posts: prevState.posts.map(post => (post.id === this.state.editPostId ? newPost : post)),
+        editPostId: null, // Reset editPostId
+        isModalOpen: false, // Close the modal
+      }));
+    } else {
+      // In create mode, add a new post
+      this.setState(prevState => ({
+        posts: [newPost, ...prevState.posts],
+        isModalOpen: false, // Close the modal
+      }));
+    }
+
+    // Reset the input values
+    this.setState({
+      inputValue: {
+        title: "",
+        post: "",
+        // img: '',
+      },
+    });
+    console.log("Post added successfully");
   };
 
   resetForm = () => {
@@ -132,6 +157,7 @@ export default class Newsfeed extends Component {
       textareaHeight,
       currentUser,
       openContextMenu,
+      editPostId,
     } = this.state;
 
     const {
@@ -143,6 +169,7 @@ export default class Newsfeed extends Component {
       handleEditPost,
       handleDeletePost,
       setOpenContextMenu,
+      handleSubmit,
     } = this;
 
     const sortedPosts = [...posts].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
@@ -164,6 +191,8 @@ export default class Newsfeed extends Component {
           hideModal={hideModal}
           isModalOpen={isModalOpen}
           textareaHeight={textareaHeight}
+          editPostId={editPostId}
+          handleSubmit={handleSubmit}
         />
         {sortedPosts.map(post => {
           const user = userMap[post.userId];
