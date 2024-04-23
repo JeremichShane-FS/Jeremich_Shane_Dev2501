@@ -23,4 +23,6 @@
 - dev
   - This branch is for my development work for the duration of the month
 - 01_Components
-  - [fill in when assignment is completed]
+  - Set up React project and the necessary components
+- 02_Application
+  - Implemented C.R.U.D. into the application
