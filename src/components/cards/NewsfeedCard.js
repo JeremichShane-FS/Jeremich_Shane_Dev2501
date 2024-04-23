@@ -125,7 +125,7 @@ const NewsfeedCard = ({
       </div>
       <div className="newsfeed-card__post-footer">
         <div className="newsfeed-card__post-footer__social">
-          <p>{likes} Likes</p>
+          {likes > 0 ? <p>{`${likes} Likes`}</p> : <p>No likes yet</p>}
           {comments.length > 0 ? (
             <Tooltip
               text={comments.map((comment, index) => {
