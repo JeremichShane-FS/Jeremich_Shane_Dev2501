@@ -1,6 +1,16 @@
 const formatTimestamp = timestamp => {
-  const postDate = new Date(timestamp);
+  // const postDate = new Date(timestamp);
   const currentDate = new Date();
+
+  if (!timestamp) {
+    return "Invalid timestamp";
+  }
+
+  const postDate = new Date(timestamp);
+
+  if (isNaN(postDate)) {
+    return "Invalid date";
+  }
 
   const diffInMilliseconds = currentDate - postDate;
   const diffInMinutes = Math.floor(diffInMilliseconds / 60000);

@@ -103,10 +103,12 @@ export default class Newsfeed extends Component {
 
     const newPost = {
       id: this.state.editPostId || uuidv4(),
+      userId: this.state.currentUser.id, // Add the current user's ID
+      timestamp: new Date().toISOString(),
       title: this.state.inputValue.title,
       content: this.state.inputValue.post,
       image_url: "https://source.unsplash.com/random",
-      userId: this.state.currentUser.id, // Add the current user's ID
+      likes: 0,
       comments: [], // Initialize comments as an empty array
       // img: this.state.inputValue.img,
     };
