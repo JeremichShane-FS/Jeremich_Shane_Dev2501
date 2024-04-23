@@ -126,22 +126,26 @@ const NewsfeedCard = ({
       <div className="newsfeed-card__post-footer">
         <div className="newsfeed-card__post-footer__social">
           <p>{likes} Likes</p>
-          <Tooltip
-            text={comments.map((comment, index) => {
-              const user = userMap[comment.userId];
-              if (!user) {
-                return null;
-              }
+          {comments.length > 0 ? (
+            <Tooltip
+              text={comments.map((comment, index) => {
+                const user = userMap[comment.userId];
+                if (!user) {
+                  return null;
+                }
 
-              return (
-                <Fragment key={comment.id}>
-                  {user.name}
-                  {index < comments.length - 1 && <br />}
-                </Fragment>
-              );
-            })}>
-            <p>{comments.length} Comments</p>
-          </Tooltip>
+                return (
+                  <Fragment key={comment.id}>
+                    {user.name}
+                    {index < comments.length - 1 && <br />}
+                  </Fragment>
+                );
+              })}>
+              <p>{comments.length} Comments</p>
+            </Tooltip>
+          ) : (
+            <p>No comments</p>
+          )}
         </div>
         <SocialInteraction />
         {comments.map(comment => {
