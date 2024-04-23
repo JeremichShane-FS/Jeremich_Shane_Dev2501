@@ -6,6 +6,7 @@ import { userProfile } from "../constants/userProfile";
 import { mockPosts } from "../data/mockPosts";
 import { mockUsers } from "../data/mockUsers";
 import { handleClassObjectInputChange } from "../utils/handleInputChange";
+import { loadFromLocalStorage, saveToLocalStorage } from "../utils/localStorage";
 
 export default class Newsfeed extends Component {
   state = {
@@ -28,11 +29,15 @@ export default class Newsfeed extends Component {
   };
 
   componentDidMount() {
+    const posts = loadFromLocalStorage("posts", [...mockPosts.posts]);
+    const users = loadFromLocalStorage("users", [...mockUsers.users]);
+
     const userMap = this.state.users.reduce((map, user) => {
       map[user.id] = user;
       return map;
     }, {});
-    this.setState({ userMap, loading: false });
+
+    this.setState({ posts, users, userMap, loading: false });
   }
 
   setOpenContextMenu = postId => {
@@ -76,26 +81,34 @@ export default class Newsfeed extends Component {
   handleEditPost = postId => {
     const postToEdit = this.state.posts.find(post => post.id === postId);
 
-    this.setState(prevState => ({
-      posts: prevState.posts.map(post =>
-        post.id === postId
-          ? { ...post, title: postToEdit.title, content: postToEdit.content }
-          : post
-      ),
-      inputValue: {
-        title: postToEdit.title,
-        post: postToEdit.content,
-        // img: postToEdit.image_url,
-        // do not have logic for image yet
+    this.setState(
+      prevState => {
+        const updatedPosts = prevState.posts.map(post =>
+          post.id === postId
+            ? { ...post, title: postToEdit.title, content: postToEdit.content }
+            : post
+        );
+
+        return {
+          posts: updatedPosts,
+          inputValue: {
+            title: postToEdit.title,
+            post: postToEdit.content,
+            // img: postToEdit.image_url,
+            // do not have logic for image yet
+          },
+          editPostId: postId,
+          isModalOpen: true,
+        };
       },
-      editPostId: postId,
-      isModalOpen: true,
-    }));
+      () => saveToLocalStorage("posts", this.state.posts)
+    );
   };
 
   handleDeletePost = postId => {
     const updatedPosts = this.state.posts.filter(post => post.id !== postId);
     this.setState({ posts: updatedPosts });
+    saveToLocalStorage("posts", updatedPosts);
   };
 
   handleSubmit = e => {
@@ -115,18 +128,26 @@ export default class Newsfeed extends Component {
 
     if (this.state.editPostId) {
       // In edit mode, update the existing post
-      this.setState(prevState => ({
-        posts: prevState.posts.map(post => (post.id === this.state.editPostId ? newPost : post)),
-        editPostId: null,
-        isModalOpen: false,
-      }));
+      this.setState(
+        prevState => ({
+          posts: prevState.posts.map(post => (post.id === this.state.editPostId ? newPost : post)),
+          editPostId: null,
+          isModalOpen: false,
+        }),
+        () => saveToLocalStorage("posts", this.state.posts)
+      );
     } else {
       // In create mode, add a new post
-      this.setState(prevState => ({
-        posts: [newPost, ...prevState.posts],
-        isModalOpen: false,
-      }));
+      this.setState(
+        prevState => ({
+          posts: [newPost, ...prevState.posts],
+          isModalOpen: false,
+        }),
+        () => saveToLocalStorage("posts", this.state.posts)
+      );
     }
+
+    saveToLocalStorage("posts", this.state.posts);
 
     // Reset the input values
     this.setState({
@@ -136,7 +157,6 @@ export default class Newsfeed extends Component {
         // img: '',
       },
     });
-    console.log("Post added successfully");
   };
 
   resetForm = () => {
