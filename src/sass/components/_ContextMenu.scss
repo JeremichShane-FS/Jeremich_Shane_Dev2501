@@ -1,24 +1,43 @@
 @use "../utilities/" as *;
 @use "../base/" as *;
 
+// TODO:  make the context menu height dynamic when the window resizes
+
 .context-menu {
   @include flex-center;
   flex-direction: column;
   justify-content: center;
   position: absolute;
-  width: inherit;
-  max-height: 278px;
+  width: max-content;
+  max-height: 17.375rem;
   right: 75%;
-  top: 100%;
   background-color: $eerie-black;
   border: 1px solid $dark-gray-100;
-  padding: 10px;
+  padding: 10px 20px;
   overflow-x: hidden;
   overflow-y: auto;
   z-index: 0;
-  perspective-origin: right top;
-  perspective: 1px;
-  overscroll-behavior-y: contain;
+  // perspective-origin: right top;
+  // perspective: 1px;
+  // overscroll-behavior-y: contain;
+
+  &__item {
+    @include flex-center;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: $dark-gray-100;
+    }
+
+    svg {
+      margin-right: 1rem;
+      font-size: $medium-font-size;
+    }
+  }
 
   &.below {
     top: 100%;
