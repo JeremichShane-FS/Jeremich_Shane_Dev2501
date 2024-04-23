@@ -21,8 +21,11 @@
       transition: $transition-time;
 
       &:hover {
-        background: $dark-gray-100;
-        cursor: pointer;
+        @include hover-style;
+
+        &:active {
+          transform: scale(0.85);
+        }
       }
     }
   }

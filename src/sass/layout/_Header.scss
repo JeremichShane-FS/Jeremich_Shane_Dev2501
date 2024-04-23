@@ -56,7 +56,7 @@
     margin-right: $small-gap;
     border-radius: 50%;
 
-    @include link-hover;
+    @include hover-style;
   }
 
   &__icon {

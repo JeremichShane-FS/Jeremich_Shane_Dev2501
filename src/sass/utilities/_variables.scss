@@ -1,13 +1,22 @@
+// Z-Index
 $modal-z-index: 1000;
 $overlay-z-index: 999;
 $tooltip-z-index: 2;
 $header-z-index: 2;
+$footer-z-index: 2;
 
+// Effects
 $transition-time: 0.2s;
 $transform-scale: scale(1.01);
 
+// Border Radius
 $xsmall-border-radius: 5px;
 $small-border-radius: 10px;
 $large-border-radius: 15px;
 $img-border-radius: 50%;
 $input-border-radius: 1.25rem;
+
+// Margins
+$small-gap: 0.5rem;
+$medium-gap: 1rem;
+$large-gap: 1.5rem;

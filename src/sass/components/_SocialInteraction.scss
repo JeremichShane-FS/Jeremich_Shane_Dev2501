@@ -15,14 +15,13 @@
     @include flex-center;
     justify-content: center;
     flex: 1;
-    cursor: pointer;
     border: none;
     border-radius: $xsmall-border-radius;
     background: none;
     padding: 0.5rem 0;
     color: $white;
 
-    @include link-hover;
+    @include hover-style;
   }
 
   &__icon {

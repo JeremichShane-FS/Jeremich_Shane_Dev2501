@@ -10,11 +10,10 @@
     font-size: $small-font-size;
     font-weight: bold;
     border-radius: $small-border-radius;
-    color: $gray-500;
-    cursor: pointer;
+    color: $gray-200;
 
     &:hover {
-      background: $dark-gray-100;
+      @include hover-style;
     }
   }
   &__icons {

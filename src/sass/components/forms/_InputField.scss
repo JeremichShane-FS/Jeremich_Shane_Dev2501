@@ -22,16 +22,9 @@
       background: $dark-gray-100;
       transform: $transform-scale;
     }
-  }
-}
 
-button.inputfield__input {
-  text-align: left;
-  color: $gray-500;
-  cursor: pointer;
-
-  &:hover {
-    background: $dark-gray-100;
-    transform: $transform-scale;
+    &:active {
+      transform: scale(0.98);
+    }
   }
 }

@@ -10,7 +10,7 @@
     @include link-margin;
 
     &-item {
-      @include link-hover;
+      @include hover-style;
       border-radius: $small-border-radius;
     }
   }

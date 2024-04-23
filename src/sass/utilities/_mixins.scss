@@ -38,7 +38,6 @@
 }
 
 @mixin card-style {
-  // background-color: $eerie-black;
   padding: $medium-gap;
   margin-bottom: $medium-gap;
   border-radius: $small-border-radius;
@@ -48,9 +47,65 @@
   margin: 1rem 0.5rem 0;
 }
 
-@mixin link-hover {
+@mixin hover-style {
   &:hover {
-    background: $dark-gray-100;
+    background: $hover-style-color;
     cursor: pointer;
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+@mixin avatar-style {
+  border-radius: $img-border-radius;
+  position: relative;
+  cursor: pointer;
+  width: 3.125rem;
+  height: 3.125rem;
+
+  background: {
+    size: cover;
+    position: center;
+  }
+
+  &:hover {
+    filter: brightness(1.2);
+  }
+
+  &.border {
+    border: 2px solid $white;
+  }
+}
+
+@mixin input-style {
+  padding: 0.625rem 0.9375rem;
+  border-radius: $input-border-radius;
+  border: 1px solid $gray-200;
+  width: 100%;
+  margin-bottom: $small-gap;
+}
+
+@mixin button-primary {
+  @include button-style;
+  background: $primary;
+  color: $white;
+  border: none;
+  border-radius: $small-border-radius;
+  transition: background $transition-time;
+  &:hover {
+    background: $primary-dark;
+  }
+}
+
+@mixin button-secondary {
+  @include button-style;
+  background: $secondary;
+  color: $white;
+  border: none;
+  border-radius: $small-border-radius;
+  transition: background $transition-time;
+  &:hover {
+    background: $secondary-dark;
   }
 }

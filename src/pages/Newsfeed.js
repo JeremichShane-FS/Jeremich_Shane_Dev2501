@@ -103,13 +103,13 @@ export default class Newsfeed extends Component {
 
     const newPost = {
       id: this.state.editPostId || uuidv4(),
-      userId: this.state.currentUser.id, // Add the current user's ID
+      userId: this.state.currentUser.id,
       timestamp: new Date().toISOString(),
       title: this.state.inputValue.title,
       content: this.state.inputValue.post,
       image_url: "https://source.unsplash.com/random",
       likes: 0,
-      comments: [], // Initialize comments as an empty array
+      comments: [],
       // img: this.state.inputValue.img,
     };
 
@@ -117,14 +117,14 @@ export default class Newsfeed extends Component {
       // In edit mode, update the existing post
       this.setState(prevState => ({
         posts: prevState.posts.map(post => (post.id === this.state.editPostId ? newPost : post)),
-        editPostId: null, // Reset editPostId
-        isModalOpen: false, // Close the modal
+        editPostId: null,
+        isModalOpen: false,
       }));
     } else {
       // In create mode, add a new post
       this.setState(prevState => ({
         posts: [newPost, ...prevState.posts],
-        isModalOpen: false, // Close the modal
+        isModalOpen: false,
       }));
     }
 

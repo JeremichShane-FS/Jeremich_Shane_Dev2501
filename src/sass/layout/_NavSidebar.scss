@@ -11,7 +11,7 @@
     margin: $small-gap 0;
     border-radius: $small-border-radius;
 
-    @include link-hover;
+    @include hover-style;
   }
 
   &__image {

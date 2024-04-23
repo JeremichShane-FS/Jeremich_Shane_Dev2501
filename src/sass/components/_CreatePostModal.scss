@@ -56,7 +56,7 @@
   &__remove {
     @include flex-center;
     justify-content: center;
-    background-color: $dark-gray-100;
+    background: none;
     font-size: $medium-font-size;
     width: 35px;
     height: 35px;
@@ -67,7 +67,11 @@
     cursor: pointer;
 
     &:hover {
-      background-color: $gray-800;
+      background: $dark-gray-100;
+
+      &:active {
+        transform: scale(0.85);
+      }
     }
   }
 
@@ -112,6 +116,10 @@
 
     &:not([rows]) {
       min-height: 6.25rem;
+    }
+
+    &::placeholder {
+      font-size: 1.5rem;
     }
 
     &--large-text {
