@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
 import CreatePostCard from "../components/cards/CreatePostCard";
-import NewsfeedCard from "../components/cards/NewsfeedCard";
+import NewsfeedCard from "../components/cards/NewsfeedCard1";
 import { userProfile } from "../constants/userProfile";
 import { mockPosts } from "../data/mockPosts";
 import { mockUsers } from "../data/mockUsers";
