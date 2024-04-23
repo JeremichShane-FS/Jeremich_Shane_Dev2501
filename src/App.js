@@ -4,7 +4,7 @@ import AdSection from "./layout/AdSection";
 import Footer from "./layout/Footer";
 import Header from "./layout/Header";
 import NavSidebar from "./layout/NavSidebar";
-import Newsfeed from "./pages/Newsfeed1";
+import Newsfeed from "./pages/Newsfeed";
 
 // TODO: Finish adding media queries for the aside containers
 // TODO: Add useMemo hooks to components that need it
