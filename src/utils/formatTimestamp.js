@@ -1,5 +1,4 @@
 const formatTimestamp = timestamp => {
-  // const postDate = new Date(timestamp);
   const currentDate = new Date();
 
   if (!timestamp) {
@@ -17,7 +16,9 @@ const formatTimestamp = timestamp => {
   const diffInHours = Math.floor(diffInMilliseconds / 3600000);
   const diffInDays = Math.floor(diffInMilliseconds / 86400000); // 1 day = 86400000 milliseconds
 
-  if (diffInMinutes < 60) {
+  if (diffInMinutes < 1) {
+    return "Just now";
+  } else if (diffInMinutes < 60) {
     return `${diffInMinutes} ${diffInMinutes === 1 ? "minute" : "minutes"} ago`;
   } else if (diffInHours < 24) {
     return `${diffInHours} ${diffInHours === 1 ? "hour" : "hours"} ago`;
