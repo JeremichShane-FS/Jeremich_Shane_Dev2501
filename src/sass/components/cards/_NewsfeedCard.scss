@@ -5,9 +5,26 @@
   background: $eerie-black;
 
   &__header-container,
-  &__span {
+  &__options {
     @include flex-between;
-    margin-bottom: $medium-gap;
+    height: max-content;
+  }
+
+  &__options {
+    position: relative;
+
+    &__icon {
+      font-size: $medium-font-size;
+      color: $white;
+      padding: 0.5rem;
+      border-radius: 50%;
+      transition: $transition-time;
+
+      &:hover {
+        background: $dark-gray-100;
+        cursor: pointer;
+      }
+    }
   }
 
   &__profile {
@@ -20,7 +37,7 @@
     margin-bottom: $medium-gap;
 
     &__picture {
-      margin-right: $medium-gap;
+      margin-right: $small-gap;
     }
 
     &__user-info {
@@ -56,36 +73,6 @@
 
       justify-content: space-between;
       font-size: $small-font-size;
-    }
-  }
-
-  &__interaction {
-    @include flex-center;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 1rem;
-    padding: 0.5rem 0;
-    font-weight: bold;
-    border-top: 1px solid $dark-gray-100;
-    border-bottom: 1px solid $dark-gray-100;
-
-    &__button {
-      @include flex-center;
-      justify-content: center;
-      flex: 1;
-      cursor: pointer;
-      border: none;
-      border-radius: $xsmall-border-radius;
-      background: none;
-      padding: 0.5rem 0;
-      color: $white;
-
-      @include link-hover;
-    }
-
-    &__icon {
-      margin-right: $small-gap;
-      font-size: $medium-font-size;
     }
   }
 

@@ -5,12 +5,14 @@ import Avatar from "../components/Avatar";
 import SearchBar from "../components/forms/SearchBar";
 import { userProfile } from "../constants/userProfile";
 
-const Header = ({ title }) => {
+const Header = ({ title, color }) => {
   return (
     <header className="header">
       <section className="header__logo-container">
         <img src={logo} alt="FriendSpace Logo" className="header__logo-container__logo" />
-        <h1 className="header__logo-container__h1">{title}</h1>
+        <h1 className="header__logo-container__h1" style={{ color: `${color}` }}>
+          {title}
+        </h1>
       </section>
       <section className="header__search-container search-bar">
         <div className="header__search-container__div">
@@ -29,10 +31,7 @@ const Header = ({ title }) => {
           <IoSettings className="header__icon" aria-label="settings" />
         </span>
         <Avatar img={userProfile.img} border>
-          <span
-            className={`header__status ${
-              userProfile.active ? "header__status--active" : ""
-            }`}></span>
+          <span className="header__status header__status--active"></span>
         </Avatar>
       </section>
     </header>

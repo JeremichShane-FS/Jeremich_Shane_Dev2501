@@ -22,6 +22,10 @@
     color: $white;
     border: none;
     cursor: pointer;
+
+    & .avatar:hover {
+      filter: none;
+    }
   }
 
   &__icon {

@@ -10,29 +10,28 @@
     gap: 2rem;
     padding: 0 $medium-gap;
     font-weight: bold;
+    margin-bottom: $medium-gap;
 
     @media (max-width: 1380px) {
       justify-content: center;
     }
   }
 
-  &__icons-text {
-    font-size: $small-font-size;
-    @media (max-width: 1380px) {
-      display: none;
-    }
-  }
+  // &__icons-text {
+  //   font-size: $small-font-size;
+  //   @media (max-width: 1380px) {
+  //     display: none;
+  //   }
+  // }
 
   &__icon-list {
     display: flex;
     list-style: none;
     font-size: $xlarge-font-size;
     height: max-content;
-    margin-bottom: $medium-gap;
   }
 
   &__list-item {
-    @include flex-center;
     justify-content: center;
     border-radius: $img-border-radius;
     transition: background $transition-time ease;

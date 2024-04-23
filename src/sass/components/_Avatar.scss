@@ -4,7 +4,6 @@
 .avatar {
   border-radius: $img-border-radius;
   position: relative;
-  margin-right: $small-gap;
   cursor: pointer;
   width: 3.125rem;
   height: 3.125rem;
@@ -12,6 +11,10 @@
   background: {
     size: cover;
     position: center;
+  }
+
+  &:hover {
+    filter: brightness(1.2);
   }
 
   &.border {

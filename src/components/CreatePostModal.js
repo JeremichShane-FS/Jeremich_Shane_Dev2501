@@ -21,11 +21,13 @@ const CreatePostModal = ({
   const [textareaHeight, setTextareaHeight] = useState("auto");
   const textareaRef = useRef(null);
 
+  // Adjust the height of the textarea based on the content
   useEffect(() => {
     if (textareaRef.current) {
       setTextareaHeight(`${textareaRef.current.scrollHeight}px`);
     }
   }, [inputValue.post]);
+
   return (
     <Modal
       isOpen={isModalOpen}
@@ -56,7 +58,7 @@ const CreatePostModal = ({
 
           <textarea
             className={`create-post-modal__textarea ${
-              inputValue.post.length <= 80
+              inputValue.post && inputValue.post.length <= 80
                 ? "create-post-modal__textarea--large-text"
                 : "create-post-modal__textarea--small-text"
             }`}

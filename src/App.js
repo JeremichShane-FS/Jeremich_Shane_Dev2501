@@ -18,10 +18,21 @@ import Newsfeed from "./pages/Newsfeed";
 // TODO: Add a modal for when a user clicks on a post
 
 export default class App extends Component {
+  state = {
+    color: "#84dcc6",
+  };
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ color: "white" });
+    }, 3000);
+  }
+
   render() {
+    const { color } = this.state;
     return (
       <>
-        <Header title="FriendSpace" placeholder="Search" />
+        <Header title="FriendSpace" placeholder="Search" color={color} />
         <main className="main">
           <Aside className="aside left">
             <NavSidebar />

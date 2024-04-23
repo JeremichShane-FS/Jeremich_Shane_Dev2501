@@ -5,6 +5,10 @@
   &__container {
     @include flex-center;
     overflow: hidden;
+
+    & .avatar {
+      margin-right: $small-gap;
+    }
   }
 
   &__input-container {

@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { v4 as uuidv4 } from "uuid";
 import CreatePostCard from "../components/cards/CreatePostCard";
 import NewsfeedCard from "../components/cards/NewsfeedCard";
 import { userProfile } from "../constants/userProfile";
@@ -10,6 +11,9 @@ export default class Newsfeed extends Component {
   state = {
     posts: [...mockPosts.posts],
     users: [...mockUsers.users],
+    userMap: {},
+    loading: true,
+    editPostId: null,
     inputValue: {
       title: "",
       post: "",
@@ -19,6 +23,20 @@ export default class Newsfeed extends Component {
       post: "",
     },
     isModalOpen: false,
+    currentUser: userProfile,
+    openContextMenu: null,
+  };
+
+  componentDidMount() {
+    const userMap = this.state.users.reduce((map, user) => {
+      map[user.id] = user;
+      return map;
+    }, {});
+    this.setState({ userMap, loading: false });
+  }
+
+  setOpenContextMenu = postId => {
+    this.setState({ openContextMenu: postId });
   };
 
   showModal = () => {
@@ -55,12 +73,12 @@ export default class Newsfeed extends Component {
     }));
   };
 
-  addPost = (title, postContent) => {
+  handleAddPost = (title, postContent) => {
     this.setState(prevState => ({
       posts: [
         ...prevState.posts,
         {
-          id: `post${prevState.posts.length + 1}`,
+          id: uuidv4(),
           userId: userProfile.id,
           timestamp: new Date().toISOString(),
           title: title,
@@ -73,6 +91,27 @@ export default class Newsfeed extends Component {
     }));
   };
 
+  handleEditPost = postId => {
+    const postToEdit = this.state.posts.find(post => post.id === postId);
+
+    this.setState({
+      inputValue: {
+        title: postToEdit.title,
+        post: postToEdit.content,
+        // img: postToEdit.image_url,
+        // do not have logic for image yet
+      },
+      editPostId: postId,
+    });
+
+    this.setState({ isModalOpen: true });
+  };
+
+  handleDeletePost = postId => {
+    const updatedPosts = this.state.posts.filter(post => post.id !== postId);
+    this.setState({ posts: updatedPosts });
+  };
+
   resetForm = () => {
     this.setState({
       inputValue: {
@@ -82,19 +121,35 @@ export default class Newsfeed extends Component {
     });
   };
 
-  findUserForPost = postId => {
-    const { users } = this.state;
-    const user = users.find(user => user.id === postId);
-    if (!user) {
-      throw new Error(`No user found for post with id ${postId}`);
-    }
-    return user;
-  };
-
   render() {
-    const { posts, users, inputValue, errors, isModalOpen, textareaHeight } = this.state;
-    const { findUserForPost, handleInputChange, addPost, resetForm, showModal, hideModal } = this;
+    const {
+      posts,
+      loading,
+      userMap,
+      inputValue,
+      errors,
+      isModalOpen,
+      textareaHeight,
+      currentUser,
+      openContextMenu,
+    } = this.state;
+
+    const {
+      handleInputChange,
+      handleAddPost,
+      resetForm,
+      showModal,
+      hideModal,
+      handleEditPost,
+      handleDeletePost,
+      setOpenContextMenu,
+    } = this;
+
     const sortedPosts = [...posts].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+    if (loading) {
+      return <div>Loading...</div>;
+    }
 
     return (
       <>
@@ -102,7 +157,7 @@ export default class Newsfeed extends Component {
           profile={userProfile}
           handleInputChange={handleInputChange}
           inputValue={inputValue}
-          addPost={addPost}
+          handleAddPost={handleAddPost}
           resetForm={resetForm}
           errors={errors}
           showModal={showModal}
@@ -111,8 +166,24 @@ export default class Newsfeed extends Component {
           textareaHeight={textareaHeight}
         />
         {sortedPosts.map(post => {
-          const user = findUserForPost(post.userId);
-          return <NewsfeedCard key={post.id} post={post} user={user} users={users} />;
+          const user = userMap[post.userId];
+          if (!user) {
+            console.error(`No user found for post with id ${post.id} and user id ${post.userId}`);
+            return null;
+          }
+          return (
+            <NewsfeedCard
+              key={post.id}
+              post={post}
+              user={user}
+              handleEditPost={handleEditPost}
+              handleDeletePost={handleDeletePost}
+              currentUser={currentUser}
+              userMap={userMap}
+              openContextMenu={openContextMenu}
+              setOpenContextMenu={setOpenContextMenu}
+            />
+          );
         })}
       </>
     );

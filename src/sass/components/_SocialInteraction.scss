@@ -1,0 +1,32 @@
+@use "../utilities/" as *;
+@use "../base/" as *;
+
+.social-interaction {
+  @include flex-center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.5rem 0;
+  font-weight: bold;
+  border-top: 1px solid $dark-gray-100;
+  border-bottom: 1px solid $dark-gray-100;
+
+  &__button {
+    @include flex-center;
+    justify-content: center;
+    flex: 1;
+    cursor: pointer;
+    border: none;
+    border-radius: $xsmall-border-radius;
+    background: none;
+    padding: 0.5rem 0;
+    color: $white;
+
+    @include link-hover;
+  }
+
+  &__icon {
+    margin-right: $small-gap;
+    font-size: $medium-font-size;
+  }
+}

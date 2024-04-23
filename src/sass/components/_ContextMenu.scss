@@ -1,0 +1,60 @@
+@use "../utilities/" as *;
+@use "../base/" as *;
+
+.context-menu {
+  @include flex-center;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  width: inherit;
+  max-height: 278px;
+  right: 75%;
+  top: 100%;
+  background-color: $eerie-black;
+  border: 1px solid $dark-gray-100;
+  padding: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 0;
+  perspective-origin: right top;
+  perspective: 1px;
+  overscroll-behavior-y: contain;
+
+  &.below {
+    top: 100%;
+    bottom: auto;
+  }
+
+  &.above {
+    bottom: 100%;
+    top: auto;
+  }
+
+  &__arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    right: 0;
+  }
+
+  &.below &__arrow {
+    top: 0;
+    border-width: 0 5px 10px 5px;
+    border-color: transparent transparent $dark-gray-100 transparent;
+  }
+
+  &.above &__arrow {
+    bottom: 0;
+    border-width: 10px 5px 0 5px;
+    border-color: $dark-gray-100 transparent transparent transparent;
+  }
+
+  &.closed {
+    display: none;
+  }
+
+  &.open {
+    display: block;
+  }
+}
