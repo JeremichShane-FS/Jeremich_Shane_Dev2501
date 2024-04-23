@@ -150,13 +150,7 @@ export default class Newsfeed extends Component {
     saveToLocalStorage("posts", this.state.posts);
 
     // Reset the input values
-    this.setState({
-      inputValue: {
-        title: "",
-        post: "",
-        // img: '',
-      },
-    });
+    this.resetForm();
   };
 
   resetForm = () => {
