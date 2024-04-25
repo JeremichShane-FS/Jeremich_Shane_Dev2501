@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import Modal from "react-modal";
+import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./sass/main.scss";
@@ -10,7 +11,9 @@ Modal.setAppElement("#root");
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </StrictMode>
 );
 
