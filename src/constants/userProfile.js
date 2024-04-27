@@ -1,7 +1,8 @@
 // Harding coding user profile data for now
 export const userProfile = {
-  id: "user16",
+  id: "u493u8y78",
   firstName: "Emily",
   lastName: "Doe",
-  img: "https://randomuser.me/api/portraits/thumb/women/19.jpg",
+  profile_picture: "https://randomuser.me/api/portraits/thumb/women/19.jpg",
+  location: "Rochester, NY",
 };

@@ -4,26 +4,23 @@ import InputAvatar from "../forms/InputAvatar";
 import Card from "./Card";
 
 const PostCard = ({
-  profile: { img, firstName },
   handleInputChange,
-  inputValue,
   errors,
   showModal,
   hideModal,
   isModalOpen,
-  textareaHeight,
   editPostId,
   handleSubmit,
+  inputValue,
+  inputValue: { title, post },
+  profile: { profile_picture, firstName },
 }) => {
-  const { title, post } = inputValue;
   const isFormValid = title?.trim() && post?.trim();
-  let placeholder = `${inputValue.title ? inputValue.title.trim() : ""} ${
-    inputValue.post ? inputValue.post.trim() : ""
-  }`.trim();
+  let placeholder = `${title ? title.trim() : ""} ${post ? post.trim() : ""}`.trim();
 
   return (
     <Card>
-      <InputAvatar type="button" onClick={showModal} placeholder={placeholder} />
+      <InputAvatar type="button" placeholder={placeholder} onClick={showModal} />
       <CreatePostIcons />
       <CreatePostModal
         handleInputChange={handleInputChange}
@@ -32,11 +29,10 @@ const PostCard = ({
         isFormValid={isFormValid}
         isModalOpen={isModalOpen}
         errors={errors}
-        img={img}
+        profile_picture={profile_picture}
         firstName={firstName}
         inputValue={inputValue}
         hideModal={hideModal}
-        textareaHeight={textareaHeight}
       />
     </Card>
   );

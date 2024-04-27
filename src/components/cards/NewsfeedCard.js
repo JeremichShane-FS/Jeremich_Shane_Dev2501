@@ -1,163 +1,61 @@
-import { Fragment, useCallback, useEffect, useRef, useState } from "react";
-import { FaXmark } from "react-icons/fa6";
-import { TbDots } from "react-icons/tb";
-import formatTimestamp from "../../utils/formatTimestamp";
-import Avatar from "../Avatar";
-import CommentItem from "../CommentItem";
-import ContextMenu from "../ContextMenu";
-import SocialInteraction from "../SocialInteraction";
-import Tooltip from "../Tooltip";
-import InputAvatar from "../forms/InputAvatar";
+import { memo, useContext, useRef } from "react";
+import { AppContext } from "../../contexts/AppContext";
+import useClickOutside from "../../hooks/useClickOutside";
+import useMenuPosition from "../../hooks/useMenuPosition";
 import Card from "./Card";
+import CardActions from "./CardActions";
+import CardComments from "./CardComments";
+import CardContent from "./CardContent";
+import CardHeader from "./CardHeader";
 
 const NewsfeedCard = ({
-  user,
-  post: { timestamp, userId, title, content, image_url, likes, comments, id: postId },
-  userMap,
-  handleEditPost,
-  handleDeletePost,
   currentUser,
   openContextMenu,
   setOpenContextMenu,
+  handleDelete: handleDeleteProp,
+  handleEdit: handleEditProp,
+  post: { timestamp, userId, title, content, image_url, likes, comments, id: postId },
 }) => {
-  const [menuPosition, setMenuPosition] = useState("below");
+  const { userMap, users } = useContext(AppContext);
+  const user = userId === currentUser.id ? currentUser : users.find(user => user.id === userId);
+  console.log("User: ", user);
   const iconRef = useRef(null);
   const menuRef = useRef(null);
-
   const isContextMenuOpen = openContextMenu === postId;
+  const menuPosition = useMenuPosition(iconRef, isContextMenuOpen);
 
-  const handleContextMenuClick = useCallback(
-    e => {
-      if (isContextMenuOpen && e.target !== iconRef.current) {
-        e.stopPropagation();
-        setOpenContextMenu(null);
-      }
-    },
-    [iconRef, setOpenContextMenu, isContextMenuOpen]
-  );
+  const handleEdit = () => handleEditProp(postId);
+  const handleDelete = () => handleDeleteProp(postId);
+  const handleContext = e => {
+    e.stopPropagation();
+    setOpenContextMenu(isContextMenuOpen ? null : postId);
+  };
 
-  useEffect(() => {
-    const iconPosition = iconRef.current.getBoundingClientRect();
-    const isIconNearBottom = window.innerHeight - iconPosition.bottom < 200;
-
-    setMenuPosition(isIconNearBottom ? "above" : "below");
-  }, [handleContextMenuClick]);
-
-  useEffect(() => {
-    const handleClickOutside = event => {
-      // Clicked on the TbDots icon, ignore
-      if (iconRef.current && iconRef.current.contains(event.target)) {
-        return;
-      }
-
-      // Clicked outside the context menu, close it
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setOpenContextMenu(null);
-      }
-    };
-
-    document.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [setOpenContextMenu]);
+  useClickOutside(menuRef, () => {
+    setOpenContextMenu(null);
+  });
 
   return (
     <Card>
-      <div className="newsfeed-card__header-container">
-        <div className="newsfeed-card__profile">
-          <Avatar
-            img={user.profile_picture}
-            className="newsfeed-card__profile__picture"
-            width="3.125rem"
-            height="3.125rem"
-          />
-          <div className="newsfeed-card__profile__user-info">
-            <h3>{user.name}</h3>
-            <p className="newsfeed-card__profile__user-info__timestamp">
-              {formatTimestamp(timestamp)}
-            </p>
-          </div>
-        </div>
-        <div className="newsfeed-card__options">
-          <div
-            ref={iconRef}
-            className="newsfeed-card__options__icon"
-            aria-expanded="false"
-            aria-haspopup="menu"
-            aria-label="Actions for this post"
-            onClick={e => {
-              e.stopPropagation();
-              setOpenContextMenu(isContextMenuOpen ? null : postId);
-            }}>
-            <TbDots />
-          </div>
-          <ContextMenu
-            ref={menuRef}
-            isOpen={isContextMenuOpen}
-            onEdit={() => handleEditPost(postId)}
-            onDelete={() => handleDeletePost(postId)}
-            menuPosition={menuPosition}
-            isUserPost={userId === currentUser.id}
-            setContextMenuOpen={setOpenContextMenu}
-          />
-          <div
-            className="newsfeed-card__options__icon"
-            aria-label="remove post"
-            onClick={() => handleDeletePost(postId)}>
-            <FaXmark />
-          </div>
-        </div>
-      </div>
-      <div className="newsfeed-card__post-content">
-        <p className="newsfeed-card__post-content p">{`${title} ${content}`}</p>
-        {image_url && (
-          <picture>
-            <source srcSet={image_url} media="(min-width: 768px)" />
-            <img
-              src={image_url}
-              alt={`Post by ${user.name}`}
-              className="newsfeed-card__post-image"
-            />
-          </picture>
-        )}
-      </div>
-      <div className="newsfeed-card__post-footer">
-        <div className="newsfeed-card__post-footer__social">
-          {likes > 0 ? <p>{`${likes} Likes`}</p> : <p>No likes yet</p>}
-          {comments.length > 0 ? (
-            <Tooltip
-              text={comments.map((comment, index) => {
-                const user = userMap[comment.userId];
-                if (!user) {
-                  return null;
-                }
-
-                return (
-                  <Fragment key={comment.id}>
-                    {user.name}
-                    {index < comments.length - 1 && <br />}
-                  </Fragment>
-                );
-              })}>
-              <p>{comments.length} Comments</p>
-            </Tooltip>
-          ) : (
-            <p>No comments</p>
-          )}
-        </div>
-        <SocialInteraction />
-        {comments.map(comment => {
-          const user = userMap[comment.userId];
-          return <CommentItem key={comment.id} comment={comment} user={user} />;
-        })}
-        <div className="newsfeed-card__comment-input">
-          <InputAvatar placeholder="Write a comment..." height="2rem" width="2rem" showIcon />
-        </div>
-      </div>
+      <CardHeader
+        currentUser={currentUser}
+        handleContextMenu={handleContext}
+        iconRef={iconRef}
+        isContextMenuOpen={isContextMenuOpen}
+        menuPosition={menuPosition}
+        menuRef={menuRef}
+        setOpenContextMenu={setOpenContextMenu}
+        timestamp={timestamp}
+        user={user}
+        userId={userId}
+        handleDelete={handleDelete}
+        handleEdit={handleEdit}
+      />
+      <CardContent title={title} content={content} imageUrl={image_url} />
+      <CardActions likes={likes} comments={comments} userMap={userMap} />
+      <CardComments comments={comments} userMap={userMap} users={users} />
     </Card>
   );
 };
 
-export default NewsfeedCard;
+export default memo(NewsfeedCard);

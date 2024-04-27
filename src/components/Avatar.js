@@ -1,5 +1,3 @@
-import React from "react";
-
 const Avatar = ({
   img,
   children,
@@ -12,12 +10,12 @@ const Avatar = ({
 
   return (
     <div
-      className={avatarClass}
       style={{
         backgroundImage: `url(${img})`,
         width: width,
         height: height,
-      }}>
+      }}
+      className={avatarClass}>
       {children}
     </div>
   );

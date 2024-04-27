@@ -3,9 +3,8 @@ import { IoSettings } from "react-icons/io5";
 import logo from "../assets/img/fs.png";
 import Avatar from "../components/Avatar";
 import SearchBar from "../components/forms/SearchBar";
-import { userProfile } from "../constants/userProfile";
 
-const Header = ({ title, color }) => {
+const Header = ({ title, color, userProfile: { profile_picture } }) => {
   return (
     <header className="header">
       <section className="header__logo-container">
@@ -30,7 +29,7 @@ const Header = ({ title, color }) => {
         <span className="header__profile__span">
           <IoSettings className="header__icon" aria-label="settings" />
         </span>
-        <Avatar img={userProfile.img} border>
+        <Avatar img={profile_picture} border>
           <span className="header__status header__status--active"></span>
         </Avatar>
       </section>

@@ -3,17 +3,13 @@ import { v4 as uuidv4 } from "uuid";
 import CreatePostCard from "../components/cards/CreatePostCard";
 import NewsfeedCard from "../components/cards/NewsfeedCard";
 import { userProfile } from "../constants/userProfile";
-import { mockPosts } from "../data/mockPosts";
-import { mockUsers } from "../data/mockUsers";
+import { AppContext } from "../contexts/AppContext";
 import { handleClassObjectInputChange } from "../utils/handleInputChange";
-import { loadFromLocalStorage, saveToLocalStorage } from "../utils/localStorage";
+import { saveToLocalStorage } from "../utils/localStorage";
 
 export default class Newsfeed extends Component {
+  static contextType = AppContext;
   state = {
-    posts: [...mockPosts.posts],
-    users: [...mockUsers.users],
-    userMap: {},
-    loading: true,
     editPostId: null,
     inputValue: {
       title: "",
@@ -27,18 +23,6 @@ export default class Newsfeed extends Component {
     currentUser: userProfile,
     openContextMenu: null,
   };
-
-  componentDidMount() {
-    const posts = loadFromLocalStorage("posts", [...mockPosts.posts]);
-    const users = loadFromLocalStorage("users", [...mockUsers.users]);
-
-    const userMap = this.state.users.reduce((map, user) => {
-      map[user.id] = user;
-      return map;
-    }, {});
-
-    this.setState({ posts, users, userMap, loading: false });
-  }
 
   setOpenContextMenu = postId => {
     this.setState({ openContextMenu: postId });
@@ -78,36 +62,23 @@ export default class Newsfeed extends Component {
     }));
   };
 
-  handleEditPost = postId => {
-    const postToEdit = this.state.posts.find(post => post.id === postId);
-
-    this.setState(
-      prevState => {
-        const updatedPosts = prevState.posts.map(post =>
-          post.id === postId
-            ? { ...post, title: postToEdit.title, content: postToEdit.content }
-            : post
-        );
-
-        return {
-          posts: updatedPosts,
-          inputValue: {
-            title: postToEdit.title,
-            post: postToEdit.content,
-            // img: postToEdit.image_url,
-            // do not have logic for image yet
-          },
-          editPostId: postId,
-          isModalOpen: true,
-        };
+  handleEdit = postId => {
+    const postToEdit = this.context.posts.find(post => post.id === postId);
+    this.setState({
+      inputValue: {
+        title: postToEdit.title,
+        post: postToEdit.content,
+        // img: postToEdit.image_url,
+        // do not have logic for image yet
       },
-      () => saveToLocalStorage("posts", this.state.posts)
-    );
+      editPostId: postId,
+      isModalOpen: true,
+    });
   };
 
-  handleDeletePost = postId => {
-    const updatedPosts = this.state.posts.filter(post => post.id !== postId);
-    this.setState({ posts: updatedPosts });
+  handleDelete = postId => {
+    const updatedPosts = this.context.posts.filter(post => post.id !== postId);
+    this.context.setPosts(updatedPosts);
     saveToLocalStorage("posts", updatedPosts);
   };
 
@@ -123,37 +94,24 @@ export default class Newsfeed extends Component {
       image_url: "https://source.unsplash.com/random",
       likes: 0,
       comments: [],
-      // img: this.state.inputValue.img,
     };
 
     if (this.state.editPostId) {
       // In edit mode, update the existing post
-      this.setState(
-        prevState => ({
-          posts: prevState.posts.map(post => (post.id === this.state.editPostId ? newPost : post)),
-          editPostId: null,
-          isModalOpen: false,
-        }),
-        () => saveToLocalStorage("posts", this.state.posts)
+      const updatedPosts = this.context.posts.map(post =>
+        post.id === this.state.editPostId ? newPost : post
       );
+      this.context.setPosts(updatedPosts);
+      saveToLocalStorage("posts", updatedPosts);
+      this.setState({ editPostId: null, isModalOpen: false });
     } else {
       // In create mode, add a new post
-      this.setState(
-        prevState => ({
-          posts: [newPost, ...prevState.posts],
-          isModalOpen: false,
-        }),
-        () => saveToLocalStorage("posts", this.state.posts)
-      );
+      const updatedPosts = [newPost, ...this.context.posts];
+      this.context.setPosts(updatedPosts);
+      saveToLocalStorage("posts", updatedPosts);
+      this.setState({ isModalOpen: false });
     }
 
-    saveToLocalStorage("posts", this.state.posts);
-
-    // Reset the input values
-    this.resetForm();
-  };
-
-  resetForm = () => {
     this.setState({
       inputValue: {
         title: "",
@@ -163,29 +121,19 @@ export default class Newsfeed extends Component {
   };
 
   render() {
-    const {
-      posts,
-      loading,
-      userMap,
-      inputValue,
-      errors,
-      isModalOpen,
-      textareaHeight,
-      currentUser,
-      openContextMenu,
-      editPostId,
-    } = this.state;
+    const { loading, posts } = this.context;
+    const { currentUser, editPostId, errors, inputValue, isModalOpen, openContextMenu } =
+      this.state;
 
     const {
+      handleDelete,
+      handleEdit,
       handleInputChange,
-      handleAddPost,
-      resetForm,
-      showModal,
-      hideModal,
-      handleEditPost,
-      handleDeletePost,
-      setOpenContextMenu,
       handleSubmit,
+      hideModal,
+      resetForm,
+      setOpenContextMenu,
+      showModal,
     } = this;
 
     const sortedPosts = [...posts].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
@@ -197,35 +145,26 @@ export default class Newsfeed extends Component {
     return (
       <>
         <CreatePostCard
-          profile={userProfile}
-          handleInputChange={handleInputChange}
-          inputValue={inputValue}
-          handleAddPost={handleAddPost}
-          resetForm={resetForm}
-          errors={errors}
-          showModal={showModal}
-          hideModal={hideModal}
-          isModalOpen={isModalOpen}
-          textareaHeight={textareaHeight}
           editPostId={editPostId}
+          errors={errors}
+          handleInputChange={handleInputChange}
           handleSubmit={handleSubmit}
+          hideModal={hideModal}
+          inputValue={inputValue}
+          isModalOpen={isModalOpen}
+          profile={userProfile}
+          resetForm={resetForm}
+          showModal={showModal}
         />
         {sortedPosts.map(post => {
-          const user = userMap[post.userId];
-          if (!user) {
-            console.error(`No user found for post with id ${post.id} and user id ${post.userId}`);
-            return null;
-          }
           return (
             <NewsfeedCard
               key={post.id}
-              post={post}
-              user={user}
-              handleEditPost={handleEditPost}
-              handleDeletePost={handleDeletePost}
               currentUser={currentUser}
-              userMap={userMap}
+              handleDelete={handleDelete}
+              handleEdit={handleEdit}
               openContextMenu={openContextMenu}
+              post={post}
               setOpenContextMenu={setOpenContextMenu}
             />
           );

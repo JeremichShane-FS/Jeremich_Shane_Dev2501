@@ -17,20 +17,20 @@ const InputField = ({
       name={name}
       maxLength={maxLength}
       placeholder={placeholder}
-      onChange={onChange}
       className={`inputfield__input${className ? ` ${className}` : ""}`}
       style={style}
+      onChange={onChange}
     />
   );
 
   const buttonElement = (
     <div
       name={name}
-      onClick={onClick}
       role="button"
       tabIndex={0}
       className={`inputfield__input${className ? ` ${className}` : ""}`}
-      style={style}>
+      style={style}
+      onClick={onClick}>
       <span className="truncate">{placeholder}</span>
     </div>
   );

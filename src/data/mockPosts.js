@@ -106,5 +106,89 @@ export const mockPosts = {
         },
       ],
     },
+    {
+      id: "post6",
+      userId: "user6",
+      timestamp: "2024-04-09T08:30:00",
+      title: "Beach Day.",
+      content: "Spent the day at the beach! 🏖️ #beach #sun",
+      image_url: "https://source.unsplash.com/featured/?beach",
+      likes: 200,
+      comments: [
+        {
+          id: "comment11",
+          userId: "user7",
+          comment: "Looks like a perfect day! 🌞",
+        },
+        {
+          id: "comment12",
+          userId: "user8",
+          comment: "Wish I was there!",
+        },
+      ],
+    },
+    {
+      id: "post7",
+      userId: "user9",
+      timestamp: "2024-04-08T15:45:00",
+      title: "Home Cooking.",
+      content: "Made a delicious meal at home. 🍲 #homecooking #food",
+      image_url: "https://source.unsplash.com/featured/?cooking",
+      likes: 150,
+      comments: [
+        {
+          id: "comment13",
+          userId: "user10",
+          comment: "That looks delicious! Can you share the recipe?",
+        },
+        {
+          id: "comment14",
+          userId: "user11",
+          comment: "Yum! I'm coming over for dinner next time. 😋",
+        },
+      ],
+    },
+    {
+      id: "post8",
+      userId: "user12",
+      timestamp: "2024-04-07T12:00:00",
+      title: "Hiking Adventure.",
+      content: "Went on a beautiful hike today. 🌲 #hiking #nature",
+      image_url: "https://source.unsplash.com/featured/?hiking",
+      likes: 220,
+      comments: [
+        {
+          id: "comment15",
+          userId: "user13",
+          comment: "Wow, that view is stunning! 🌄",
+        },
+        {
+          id: "comment16",
+          userId: "user14",
+          comment: "Where is this? I'd love to go hiking there!",
+        },
+      ],
+    },
+    {
+      id: "post9",
+      userId: "user15",
+      timestamp: "2024-04-06T18:30:00",
+      title: "City Life.",
+      content: "Enjoying the city lights tonight. 🌃 #citylife #night",
+      image_url: "https://source.unsplash.com/featured/?citynight",
+      likes: 180,
+      comments: [
+        {
+          id: "comment17",
+          userId: "user16",
+          comment: "Beautiful! Which city is this?",
+        },
+        {
+          id: "comment18",
+          userId: "user17",
+          comment: "City life is the best! 🏙️",
+        },
+      ],
+    },
   ],
 };

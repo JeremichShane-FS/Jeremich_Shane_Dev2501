@@ -18,10 +18,9 @@
       background-color: $dark-gray-200;
       border-radius: $large-border-radius;
       font-size: $small-font-size;
-
-      &__name {
-        font-weight: bold;
-      }
+    }
+    &__name {
+      font-weight: bold;
     }
   }
 }

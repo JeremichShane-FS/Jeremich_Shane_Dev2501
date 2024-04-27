@@ -1,16 +1,13 @@
 import Avatar from "../components/Avatar";
 import { navSidebar } from "../constants/navSidebar";
-import { userProfile } from "../constants/userProfile";
 
-const NavSidebar = () => {
-  const { firstName, lastName, img } = userProfile;
-
+const NavSidebar = ({ userProfile: { firstName, lastName, profile_picture } }) => {
   return (
     <nav role="navigation" className="navsidebar">
       <ul className="navsidebar__list">
         <li className="navsidebar__list-item">
           <button className="navsidebar__image">
-            <Avatar img={img} height="2rem" width="2rem" />
+            <Avatar img={profile_picture} height="2rem" width="2rem" />
             {firstName} {lastName}
           </button>
         </li>
@@ -18,8 +15,8 @@ const NavSidebar = () => {
           return (
             <li key={index} className="navsidebar__list-item">
               <Component
-                icon={Icon}
                 color={color}
+                icon={Icon}
                 text={label}
                 aria={`Navigate to ${label}`}
                 className="btn-interaction"

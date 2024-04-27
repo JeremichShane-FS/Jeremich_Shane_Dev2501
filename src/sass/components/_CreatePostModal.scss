@@ -17,6 +17,10 @@
     width: 90%;
   }
 
+  &:focus-visible {
+    outline: none;
+  }
+
   &__overlay {
     @include flex-center;
     flex-direction: column;
