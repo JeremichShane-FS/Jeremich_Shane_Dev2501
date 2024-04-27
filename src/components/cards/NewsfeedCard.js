@@ -18,7 +18,6 @@ const NewsfeedCard = ({
 }) => {
   const { userMap, users } = useContext(AppContext);
   const user = userId === currentUser.id ? currentUser : users.find(user => user.id === userId);
-  console.log("User: ", user);
   const iconRef = useRef(null);
   const menuRef = useRef(null);
   const isContextMenuOpen = openContextMenu === postId;

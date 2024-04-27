@@ -14,12 +14,12 @@ const SearchBar = ({ placeholder }) => {
 
   return (
     <InputField
+      className="searchbar__input"
       name="search"
+      placeholder={placeholder}
       type="search"
       value={searchQuery}
-      placeholder={placeholder}
       onChange={handleSearchChange}
-      className="searchbar__input"
     />
   );
 };
