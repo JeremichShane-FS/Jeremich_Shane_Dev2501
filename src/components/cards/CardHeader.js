@@ -1,8 +1,8 @@
 import { FaXmark } from "react-icons/fa6";
 import { TbDots } from "react-icons/tb";
-import formatTimestamp from "../../utils/formatTimestamp";
 import Avatar from "../Avatar";
 import ContextMenu from "../ContextMenu";
+import { formatTimestamp } from "../../utils";
 
 const CardHeader = ({
   handleContextMenu,

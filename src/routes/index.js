@@ -1,8 +1,4 @@
-// routes.js
-import Dashboard from "../pages/Dashboard";
-import Messages from "../pages/Messages";
-import Newsfeed from "../pages/Newsfeed";
-import Settings from "../pages/Settings";
+import { Dashboard, Messages, Newsfeed, NotFoundPage, Notifications, Settings } from "../pages";
 import Root from "./Root";
 
 export const routes = [
@@ -14,6 +10,8 @@ export const routes = [
       { path: "/dashboard", element: <Dashboard /> },
       { path: "/messages", element: <Messages /> },
       { path: "/settings", element: <Settings /> },
+      { path: "/notifications", element: <Notifications /> },
+      { path: "*", element: <NotFoundPage /> },
     ],
   },
 ];

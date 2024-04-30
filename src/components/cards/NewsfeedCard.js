@@ -1,7 +1,6 @@
 import { memo, useContext, useRef } from "react";
 import { AppContext } from "../../contexts/AppContext";
-import useClickOutside from "../../hooks/useClickOutside";
-import useMenuPosition from "../../hooks/useMenuPosition";
+import { useClickOutside, useMenuPosition } from "../../hooks";
 import Card from "./Card";
 import CardActions from "./CardActions";
 import CardComments from "./CardComments";

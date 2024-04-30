@@ -2,7 +2,7 @@ import { FaXmark } from "react-icons/fa6";
 import Modal from "react-modal";
 import Avatar from "../components/Avatar";
 import InputField from "../components/forms/InputField";
-import { useAutoResize } from "../hooks/useAutoResize";
+import { useAutoResize } from "../hooks";
 import PostEnhancements from "./PostEnhancements";
 import FormButton from "./buttons/FormButton";
 import InputError from "./forms/InputError";

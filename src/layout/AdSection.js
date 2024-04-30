@@ -1,6 +1,6 @@
 import { Component } from "react";
 import AdCard from "../components/cards/AdCard";
-import { mockAds } from "../data/mockAds";
+import { mockAds } from "../data";
 
 export default class AdSection extends Component {
   render() {

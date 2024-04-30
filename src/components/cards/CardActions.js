@@ -12,14 +12,13 @@ const CardActions = ({ likes, comments, userMap }) => {
           <Tooltip
             text={comments.map((comment, index) => {
               const user = userMap[comment.userId];
-
               if (!user) {
                 return null;
               }
 
               return (
                 <Fragment key={comment.id}>
-                  {user.firstName} {user.lastName}
+                  {user}
                   {index < comments.length - 1 && <br />}
                 </Fragment>
               );

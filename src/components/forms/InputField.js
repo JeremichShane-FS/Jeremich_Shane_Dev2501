@@ -25,9 +25,8 @@ const InputField = ({
 
   const buttonElement = (
     <div
+      type="button"
       name={name}
-      role="button"
-      tabIndex={0}
       className={`inputfield__input${className ? ` ${className}` : ""}`}
       style={style}
       onClick={onClick}>

@@ -38,7 +38,7 @@
   }
 
   &__header {
-    @include flex-between;
+    @include justify-between;
     align-items: center;
     margin-bottom: $large-gap;
     padding-bottom: $large-gap;

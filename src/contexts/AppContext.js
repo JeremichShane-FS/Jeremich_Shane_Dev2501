@@ -1,8 +1,7 @@
 import { createContext, useEffect, useMemo, useState } from "react";
 import { userProfile } from "../constants/userProfile";
-import { mockPosts } from "../data/mockPosts";
-import { mockUsers } from "../data/mockUsers";
-import { loadFromLocalStorage } from "../utils/localStorage";
+import { mockPosts, mockUsers } from "../data";
+import { loadFromLocalStorage } from "../utils";
 
 export const AppContext = createContext();
 

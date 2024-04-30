@@ -9,7 +9,7 @@ const AdCard = ({ ad }) => {
 
   return (
     <Card color="transparent">
-      <a href={url} target="_blank" rel="noreferrer" key={id}>
+      <a key={id} href={url} target="_blank" rel="noreferrer">
         <div className="ad-card">
           <img src={image} alt={title} className="ad-card__image" />
           <div className="ad-card__content">

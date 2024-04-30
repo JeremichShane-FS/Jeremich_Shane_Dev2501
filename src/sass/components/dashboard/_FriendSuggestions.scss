@@ -1,0 +1,71 @@
+@use "../../utilities/" as *;
+@use "../../base/" as *;
+
+.friend-suggestions {
+  min-width: 16.5625rem;
+  margin-top: 1rem;
+  padding: 0 0.2rem;
+
+  &__list {
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    padding: 0 0.2rem;
+  }
+
+  &__item {
+    @include flex-center;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    &:hover {
+      border-radius: 0.5rem;
+    }
+
+    &__options {
+      p {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    &__option {
+      @include button-style;
+      background: $sky-blue;
+      color: $eerie-black;
+      font-size: 0.875rem;
+      border: none;
+      border-radius: $small-border-radius;
+      padding: 0.5rem;
+      margin-right: 1rem;
+
+      &:hover {
+        background: rgba($sky-blue, 0.8);
+        transform: scale(1.05);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+
+      &--remove {
+        color: $white;
+        background: $gray-800;
+
+        &:hover {
+          background: $gray-900;
+          transform: scale(1.05);
+        }
+
+        &:active {
+          transform: scale(0.98);
+        }
+      }
+    }
+  }
+
+  &__img {
+    border-radius: 50%;
+    height: 2.5rem;
+    margin-right: 0.5rem;
+    width: 2.5rem;
+  }
+}

@@ -1,10 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Aside from "../components/Aside";
 import { userProfile } from "../constants/userProfile";
-import AdSection from "../layout/AdSection";
-import Footer from "../layout/Footer";
-import Header from "../layout/Header";
-import NavSidebar from "../layout/NavSidebar";
+import { AdSection, Footer, Header, NavSidebar } from "../layout";
 
 const Root = () => (
   <>

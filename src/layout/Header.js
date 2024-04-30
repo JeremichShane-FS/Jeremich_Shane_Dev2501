@@ -23,9 +23,11 @@ const Header = ({ title, color, userProfile: { profile_picture } }) => {
         </div>
       </section>
       <section className="header__profile-container">
-        <span className="header__profile__span">
-          <FaBell className="header__icon" aria-label="notifications" />
-        </span>
+        <Link to="/notifications">
+          <span className="header__profile__span">
+            <FaBell className="header__icon" aria-label="notifications" />
+          </span>
+        </Link>
         <Link to="/messages">
           <span className="header__profile__span">
             <FaEnvelope className="header__icon" aria-label="messages" />

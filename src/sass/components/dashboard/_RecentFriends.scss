@@ -1,0 +1,32 @@
+@use "../../utilities/" as *;
+
+.recent-friends {
+  width: 16.5625rem;
+  margin-top: 1rem;
+  padding: 0 0.2rem;
+
+  &__list {
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    padding: 0 0.2rem;
+  }
+
+  &__item {
+    @include flex-center;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    &:hover {
+      @include hover-style;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+  }
+
+  &__img {
+    border-radius: 50%;
+    height: 2.5rem;
+    margin-right: 0.5rem;
+    width: 2.5rem;
+  }
+}

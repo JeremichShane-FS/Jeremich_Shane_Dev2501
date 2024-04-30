@@ -11,7 +11,7 @@
   transition: $transition-time;
 
   &--active {
-    background-color: $post-active-color;
+    background: $post-active-color;
     color: inherit;
   }
 

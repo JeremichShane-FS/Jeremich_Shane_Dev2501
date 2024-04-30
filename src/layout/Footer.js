@@ -1,4 +1,4 @@
-import setCopyright from "../utils/copyright";
+import { setCopyright } from "../utils";
 
 const Footer = () => {
   return (

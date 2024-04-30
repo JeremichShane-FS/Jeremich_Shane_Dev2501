@@ -4,8 +4,7 @@ import CreatePostCard from "../components/cards/CreatePostCard";
 import NewsfeedCard from "../components/cards/NewsfeedCard";
 import { userProfile } from "../constants/userProfile";
 import { AppContext } from "../contexts/AppContext";
-import { handleClassObjectInputChange } from "../utils/handleInputChange";
-import { saveToLocalStorage } from "../utils/localStorage";
+import { handleClassObjectInputChange, saveToLocalStorage } from "../utils";
 
 export default class Newsfeed extends Component {
   static contextType = AppContext;
@@ -143,7 +142,7 @@ export default class Newsfeed extends Component {
     }
 
     return (
-      <>
+      <div className="newsfeed">
         <CreatePostCard
           editPostId={editPostId}
           errors={errors}
@@ -169,7 +168,7 @@ export default class Newsfeed extends Component {
             />
           );
         })}
-      </>
+      </div>
     );
   }
 }

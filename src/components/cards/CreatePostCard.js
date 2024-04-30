@@ -20,7 +20,12 @@ const PostCard = ({
 
   return (
     <Card>
-      <InputAvatar type="button" placeholder={placeholder} onClick={showModal} />
+      <InputAvatar
+        type="button"
+        placeholder={placeholder}
+        className="create-post-card"
+        onClick={showModal}
+      />
       <CreatePostIcons />
       <CreatePostModal
         handleInputChange={handleInputChange}

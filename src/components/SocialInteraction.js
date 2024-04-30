@@ -20,23 +20,23 @@ const SocialInteraction = () => {
       <InteractionButton
         icon={AiOutlineLike}
         text="Like"
-        onClick={handleLike}
         className="social-interaction__button"
         classIcon="social-interaction__icon"
+        onClick={handleLike}
       />
       <InteractionButton
         icon={GoComment}
         text="Comment"
-        onClick={handleComment}
         className="social-interaction__button"
         classIcon="social-interaction__icon"
+        onClick={handleComment}
       />
       <InteractionButton
         icon={FaRegShareSquare}
         text="Share"
-        onClick={handleShare}
         className="social-interaction__button"
         classIcon="social-interaction__icon"
+        onClick={handleShare}
       />
     </div>
   );

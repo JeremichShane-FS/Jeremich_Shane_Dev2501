@@ -1,0 +1,18 @@
+@use "../../base/" as *;
+
+.recent-posts__post {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  background-color: $ultra-violet;
+  box-shadow: 0 0 10px rgba($eerie-black, 0.1);
+  transition: cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+}

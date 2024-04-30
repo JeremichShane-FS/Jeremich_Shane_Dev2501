@@ -22,19 +22,28 @@
   flex-direction: column;
 }
 
-@mixin flex-between {
+@mixin justify-between {
   display: flex;
   justify-content: space-between;
 }
 
-@mixin flex-around {
+@mixin justify-around {
   display: flex;
   justify-content: space-around;
+}
+
+@mixin justify-center {
+  display: flex;
+  justify-content: center;
 }
 
 @mixin button-style {
   padding: 0.625rem 0.9375rem;
   cursor: pointer;
+
+  &:active {
+    transform: scale(0.98);
+  }
 }
 
 @mixin card-style {

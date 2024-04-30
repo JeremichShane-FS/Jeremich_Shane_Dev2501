@@ -6,7 +6,7 @@
 
   &__header-container,
   &__options {
-    @include flex-between;
+    @include justify-between;
     height: max-content;
   }
 

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { IoSend } from "react-icons/io5";
 import { userProfile } from "../../constants/userProfile";
 import Avatar from "../Avatar";
-import Tooltip from "../Tooltip";
 import InputField from "./InputField";
 
 const InputAvatar = ({
@@ -48,12 +47,10 @@ const InputAvatar = ({
         />
         {showIcon && (
           <div className="input-avatar__icon-container">
-            <Tooltip text="Comment">
-              <IoSend
-                className={`input-avatar__icon ${inputValue ? "input-avatar__icon--active" : ""}`}
-                onClick={handleCommentPost}
-              />
-            </Tooltip>
+            <IoSend
+              className={`input-avatar__icon ${inputValue ? "input-avatar__icon--active" : ""}`}
+              onClick={handleCommentPost}
+            />
           </div>
         )}
       </div>

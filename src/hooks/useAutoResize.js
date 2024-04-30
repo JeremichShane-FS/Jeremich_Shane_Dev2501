@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export function useAutoResize(initialContent, handleInputChange) {
+const useAutoResize = (initialContent, handleInputChange) => {
   const [content, setContent] = useState(initialContent);
   const textareaRef = useRef(null);
 
@@ -23,4 +23,6 @@ export function useAutoResize(initialContent, handleInputChange) {
   };
 
   return [setRef, setContentAndHandleInputChange];
-}
+};
+
+export default useAutoResize;

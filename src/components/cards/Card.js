@@ -1,6 +1,6 @@
-const Card = ({ children, color = "#222" }) => {
+const Card = ({ children, className, color = "#222" }) => {
   return (
-    <article className="card" style={{ backgroundColor: color }}>
+    <article className={`card ${className}`} style={{ backgroundColor: color }}>
       {children}
     </article>
   );
