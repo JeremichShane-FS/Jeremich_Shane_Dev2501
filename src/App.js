@@ -4,6 +4,11 @@ import { routes } from "./routes";
 
 const router = createBrowserRouter(routes);
 
+// TODO: Finish adding media queries for the aside containers
+// TODO: Add deBounce to the search input
+// TODO: Add a loading spinner for when the page is loading
+// TODO: Find API to fetch data from instead of using mock data
+
 // Clicking the Avatar component in the Header component will navigate to the Dashboard page.
 // Clicking the settings icon in the Header component will navigate to the Settings page.
 // Clicking the messages icon in the Header component will navigate to the Messages page.

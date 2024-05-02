@@ -1,8 +1,6 @@
 @use "../utilities/" as *;
 @use "../base/" as *;
 
-// TODO:  make the context menu height dynamic when the window resizes
-
 .context-menu {
   @include flex-center;
   flex-direction: column;

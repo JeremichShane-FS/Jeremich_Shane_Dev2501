@@ -1,8 +1,9 @@
 import { FaXmark } from "react-icons/fa6";
 import { TbDots } from "react-icons/tb";
+import { formatTimestamp } from "../../utils";
 import Avatar from "../Avatar";
 import ContextMenu from "../ContextMenu";
-import { formatTimestamp } from "../../utils";
+import { IsUser, PostUser } from "../context-menu";
 
 const CardHeader = ({
   handleContextMenu,
@@ -12,7 +13,7 @@ const CardHeader = ({
   isContextMenuOpen,
   menuPosition,
   menuRef,
-  setOpenContextMenu,
+  postId,
   timestamp,
   userId,
   currentUser: { id },
@@ -46,16 +47,14 @@ const CardHeader = ({
           onClick={handleContextMenu}>
           <TbDots />
         </div>
-        <ContextMenu
-          ref={menuRef}
-          isOpen={isContextMenuOpen}
-          isUserPost={userId === id}
-          menuPosition={menuPosition}
-          postUserId={userId}
-          setContextMenuOpen={setOpenContextMenu}
-          onEdit={handleEdit}
-          onDelete={handleDelete}
-        />
+        <ContextMenu ref={menuRef} isOpen={isContextMenuOpen} menuPosition={menuPosition}>
+          {console.log(userId, id)}
+          {userId === id ? (
+            <IsUser onEdit={handleEdit} onDelete={handleDelete} />
+          ) : (
+            <PostUser firstName={firstName} lastName={lastName} onDelete={handleDelete} />
+          )}
+        </ContextMenu>
         <div
           aria-label="remove post"
           className="newsfeed-card__options__icon"

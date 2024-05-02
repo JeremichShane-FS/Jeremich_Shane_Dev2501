@@ -42,6 +42,7 @@ const NewsfeedCard = ({
         isContextMenuOpen={isContextMenuOpen}
         menuPosition={menuPosition}
         menuRef={menuRef}
+        postId={postId}
         setOpenContextMenu={setOpenContextMenu}
         timestamp={timestamp}
         user={user}
