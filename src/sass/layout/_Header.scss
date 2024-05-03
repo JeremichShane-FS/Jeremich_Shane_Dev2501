@@ -5,7 +5,7 @@
   display: grid;
   grid-template-columns: 20% 1fr 20%;
   width: 100%;
-  padding: $medium-gap;
+  padding: $small-gap;
   background: $eerie-black;
   position: fixed;
   z-index: $header-z-index;
@@ -44,6 +44,15 @@
       padding-left: $small-gap;
       border-radius: $input-border-radius;
       background: $white;
+    }
+  }
+
+  &__profile-avatar {
+    position: relative;
+
+    & .context-menu {
+      right: 0;
+      bottom: auto;
     }
   }
 

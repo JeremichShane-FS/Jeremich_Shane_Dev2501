@@ -9,9 +9,9 @@ $aside-width: 22rem;
 
 .aside {
   position: fixed;
-  top: 6.25rem;
+  top: 5.25rem;
   width: inherit;
-  height: calc(100vh - 9rem - 2rem);
+  height: calc(100vh - 9rem - 1rem);
   overflow-y: auto;
   overflow-x: hidden;
   margin: 0 auto;

@@ -6,11 +6,11 @@ import ContextMenu from "../ContextMenu";
 import { IsUser, PostUser } from "../context-menu";
 
 const CardHeader = ({
-  handleContextMenu,
+  handleContextMenu: handleContextMenuProp,
   handleDelete,
   handleEdit,
   iconRef,
-  isContextMenuOpen,
+  openContextMenu,
   menuPosition,
   menuRef,
   postId,
@@ -19,6 +19,10 @@ const CardHeader = ({
   currentUser: { id },
   user: { firstName, lastName, profile_picture },
 }) => {
+  const isOpen = openContextMenu && openContextMenu.source === "NewsfeedCard";
+  const handleContextMenu = e => {
+    handleContextMenuProp(e, "NewsfeedCard", postId);
+  };
   return (
     <div className="newsfeed-card__header-container">
       <div className="newsfeed-card__profile">
@@ -47,8 +51,7 @@ const CardHeader = ({
           onClick={handleContextMenu}>
           <TbDots />
         </div>
-        <ContextMenu ref={menuRef} isOpen={isContextMenuOpen} menuPosition={menuPosition}>
-          {console.log(userId, id)}
+        <ContextMenu ref={menuRef} isOpen={isOpen} menuPosition={menuPosition}>
           {userId === id ? (
             <IsUser onEdit={handleEdit} onDelete={handleDelete} />
           ) : (

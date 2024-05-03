@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import Modal from "react-modal";
 import App from "./App";
-import { AppProvider } from "./contexts/AppContext";
+import { AppProvider } from "./contexts";
 import reportWebVitals from "./reportWebVitals";
 import "./sass/main.scss";
 

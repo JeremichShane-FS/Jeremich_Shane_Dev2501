@@ -14,17 +14,21 @@ const NavSidebar = ({ userProfile: { firstName, lastName, profile_picture } }) =
             </button>
           </li>
         </Link>
-        {navSidebar.map(({ icon: Icon, color, label, component: Component }, index) => {
+        {navSidebar.map(({ icon: Icon, color, label, component: Component, path }, index) => {
           return (
             <li key={index} className="navsidebar__list-item">
-              <Component
-                color={color}
-                icon={Icon}
-                text={label}
-                aria={`Navigate to ${label}`}
-                className="btn-interaction"
-                classIcon="btn-interaction__navsidebar__icon navsidebar__icon"
-              />
+              <div>
+                <Link to={path}>
+                  <Component
+                    color={color}
+                    icon={Icon}
+                    text={label}
+                    aria={`Navigate to ${label}`}
+                    className="btn-interaction"
+                    classIcon="btn-interaction__navsidebar__icon navsidebar__icon"
+                  />
+                </Link>
+              </div>
             </li>
           );
         })}

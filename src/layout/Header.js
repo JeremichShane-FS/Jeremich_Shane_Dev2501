@@ -1,11 +1,32 @@
+import { useContext, useRef } from "react";
 import { FaBell, FaEnvelope, FaSearch } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/fs.png";
 import Avatar from "../components/Avatar";
+import ContextMenu from "../components/ContextMenu";
+import { HeaderProfile } from "../components/context-menu";
 import SearchBar from "../components/forms/SearchBar";
+import { OpenContextMenuContext } from "../contexts";
+import { useClickOutside } from "../hooks";
 
-const Header = ({ title, color, userProfile: { profile_picture } }) => {
+const Header = ({ title, color, menuPosition, userProfile: { profile_picture } }) => {
+  const {
+    openContextMenu,
+    setOpenContextMenu,
+    handleContextMenu: handleContextMenuProp,
+  } = useContext(OpenContextMenuContext);
+  const menuRef = useRef(null);
+  const handleContextMenu = e => {
+    handleContextMenuProp(e, "Header");
+  };
+
+  useClickOutside(menuRef, () => {
+    setOpenContextMenu(null);
+  });
+
+  const isOpen = openContextMenu && openContextMenu.source === "Header";
+
   return (
     <header className="header">
       <section className="header__logo-container">
@@ -38,11 +59,14 @@ const Header = ({ title, color, userProfile: { profile_picture } }) => {
             <IoSettings className="header__icon" aria-label="settings" />
           </span>
         </Link>
-        <Link to="/dashboard">
+        <div className="header__profile-avatar" onClick={handleContextMenu}>
           <Avatar border img={profile_picture}>
             <span className="header__status header__status--active"></span>
           </Avatar>
-        </Link>
+          <ContextMenu ref={menuRef} isOpen={isOpen} menuPosition={menuPosition}>
+            <HeaderProfile />
+          </ContextMenu>
+        </div>
       </section>
     </header>
   );

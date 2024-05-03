@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import CreatePostCard from "../components/cards/CreatePostCard";
 import NewsfeedCard from "../components/cards/NewsfeedCard";
 import { userProfile } from "../constants/userProfile";
-import { AppContext } from "../contexts/AppContext";
+import { AppContext, OpenContextMenuContext } from "../contexts";
 import { handleClassObjectInputChange, saveToLocalStorage } from "../utils";
 
 export default class Newsfeed extends Component {
@@ -20,12 +20,11 @@ export default class Newsfeed extends Component {
     },
     isModalOpen: false,
     currentUser: userProfile,
-    openContextMenu: null,
   };
 
-  setOpenContextMenu = postId => {
-    this.setState({ openContextMenu: postId });
-  };
+  // setOpenContextMenu = postId => {
+  //   this.context(postId);
+  // };
 
   showModal = () => {
     this.setState({ isModalOpen: true });
@@ -121,19 +120,10 @@ export default class Newsfeed extends Component {
 
   render() {
     const { loading, posts } = this.context;
-    const { currentUser, editPostId, errors, inputValue, isModalOpen, openContextMenu } =
-      this.state;
+    const { currentUser, editPostId, errors, inputValue, isModalOpen } = this.state;
 
-    const {
-      handleDelete,
-      handleEdit,
-      handleInputChange,
-      handleSubmit,
-      hideModal,
-      resetForm,
-      setOpenContextMenu,
-      showModal,
-    } = this;
+    const { handleDelete, handleEdit, handleInputChange, handleSubmit, hideModal, showModal } =
+      this;
 
     const sortedPosts = [...posts].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
@@ -142,33 +132,37 @@ export default class Newsfeed extends Component {
     }
 
     return (
-      <div className="newsfeed">
-        <CreatePostCard
-          editPostId={editPostId}
-          errors={errors}
-          handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
-          hideModal={hideModal}
-          inputValue={inputValue}
-          isModalOpen={isModalOpen}
-          profile={userProfile}
-          resetForm={resetForm}
-          showModal={showModal}
-        />
-        {sortedPosts.map(post => {
-          return (
-            <NewsfeedCard
-              key={post.id}
-              currentUser={currentUser}
-              handleDelete={handleDelete}
-              handleEdit={handleEdit}
-              openContextMenu={openContextMenu}
-              post={post}
-              setOpenContextMenu={setOpenContextMenu}
+      <OpenContextMenuContext.Consumer>
+        {({ openContextMenu, setOpenContextMenu, handleContextMenu }) => (
+          <div className="newsfeed">
+            <CreatePostCard
+              editPostId={editPostId}
+              errors={errors}
+              handleInputChange={handleInputChange}
+              handleSubmit={handleSubmit}
+              hideModal={hideModal}
+              inputValue={inputValue}
+              isModalOpen={isModalOpen}
+              profile={userProfile}
+              showModal={showModal}
             />
-          );
-        })}
-      </div>
+            {sortedPosts.map(post => {
+              return (
+                <NewsfeedCard
+                  key={post.id}
+                  currentUser={currentUser}
+                  handleDelete={handleDelete}
+                  handleEdit={handleEdit}
+                  openContextMenu={openContextMenu}
+                  post={post}
+                  setOpenContextMenu={setOpenContextMenu}
+                  handleContextMenu={handleContextMenu}
+                />
+              );
+            })}
+          </div>
+        )}
+      </OpenContextMenuContext.Consumer>
     );
   }
 }

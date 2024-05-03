@@ -15,9 +15,10 @@
   overflow-x: hidden;
   overflow-y: auto;
   z-index: 1;
-  // perspective-origin: right top;
-  // perspective: 1px;
-  // overscroll-behavior-y: contain;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  color: $white;
+  font-size: $small-font-size;
 
   &__item {
     @include flex-center;

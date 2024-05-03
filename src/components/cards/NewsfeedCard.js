@@ -1,5 +1,5 @@
 import { memo, useContext, useRef } from "react";
-import { AppContext } from "../../contexts/AppContext";
+import { AppContext } from "../../contexts";
 import { useClickOutside, useMenuPosition } from "../../hooks";
 import Card from "./Card";
 import CardActions from "./CardActions";
@@ -11,6 +11,7 @@ const NewsfeedCard = ({
   currentUser,
   openContextMenu,
   setOpenContextMenu,
+  handleContextMenu,
   handleDelete: handleDeleteProp,
   handleEdit: handleEditProp,
   post: { timestamp, userId, title, content, image_url, likes, comments, id: postId },
@@ -23,12 +24,8 @@ const NewsfeedCard = ({
   const menuPosition = useMenuPosition(iconRef, isContextMenuOpen);
 
   const handleEdit = () => handleEditProp(postId);
-  const handleDelete = () => handleDeleteProp(postId);
-  const handleContext = e => {
-    e.stopPropagation();
-    setOpenContextMenu(isContextMenuOpen ? null : postId);
-  };
 
+  const handleDelete = () => handleDeleteProp(postId);
   useClickOutside(menuRef, () => {
     setOpenContextMenu(null);
   });
@@ -37,13 +34,14 @@ const NewsfeedCard = ({
     <Card>
       <CardHeader
         currentUser={currentUser}
-        handleContextMenu={handleContext}
+        handleContextMenu={handleContextMenu}
         iconRef={iconRef}
         isContextMenuOpen={isContextMenuOpen}
         menuPosition={menuPosition}
         menuRef={menuRef}
         postId={postId}
-        setOpenContextMenu={setOpenContextMenu}
+        openContextMenu={openContextMenu}
+        // setOpenContextMenu={setOpenContextMenu}
         timestamp={timestamp}
         user={user}
         userId={userId}
