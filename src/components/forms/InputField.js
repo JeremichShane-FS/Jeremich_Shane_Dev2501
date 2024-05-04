@@ -6,6 +6,8 @@ const InputField = ({
   name,
   maxLength,
   placeholder,
+  disabled,
+  labelClassName,
   type = "text",
   onChange = () => {},
   onClick = () => {},
@@ -17,6 +19,7 @@ const InputField = ({
       name={name}
       maxLength={maxLength}
       placeholder={placeholder}
+      disabled={disabled}
       className={`inputfield__input${className ? ` ${className}` : ""}`}
       style={style}
       onChange={onChange}
@@ -28,6 +31,7 @@ const InputField = ({
       type="button"
       name={name}
       className={`inputfield__input${className ? ` ${className}` : ""}`}
+      disabled={disabled}
       style={style}
       onClick={onClick}>
       <span className="truncate">{placeholder}</span>
@@ -39,7 +43,7 @@ const InputField = ({
   return !label ? (
     element
   ) : (
-    <div className="inputfield__div">
+    <div className={`inputfield__div ${labelClassName}`}>
       <label htmlFor={name}>{label}</label>
       {element}
     </div>

@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IoSend } from "react-icons/io5";
-import { userProfile } from "../../constants/userProfile";
+import { AppContext } from "../../contexts";
 import Avatar from "../Avatar";
 import InputField from "./InputField";
 
@@ -16,7 +16,11 @@ const InputAvatar = ({
   placeholder,
   type,
 }) => {
-  const { firstName, profile_picture } = userProfile;
+  const { userProfile } = useContext(AppContext);
+  const {
+    firstName,
+    profile_picture: { medium },
+  } = userProfile;
   placeholder = placeholder !== "" ? placeholder : `What's on your mind, ${firstName}?`;
   const [inputValue, setInputValue] = useState("");
 
@@ -33,7 +37,7 @@ const InputAvatar = ({
 
   return (
     <div className={`input-avatar__container ${className}`}>
-      <Avatar img={profile_picture} height={height} width={width} />
+      <Avatar img={medium} height={height} width={width} />
       <div className="input-avatar__input-container">
         <InputField
           type={type}

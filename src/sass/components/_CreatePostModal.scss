@@ -96,12 +96,12 @@
   }
 
   &__title-input {
-    background-color: $dark-gray-200;
+    background: $dark-gray-200;
     margin: 0 auto $medium-gap;
     grid-area: title;
 
     &:hover {
-      background-color: $dark-gray-100;
+      background: $dark-gray-100;
     }
   }
 

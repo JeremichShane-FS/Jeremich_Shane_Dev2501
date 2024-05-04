@@ -13,7 +13,10 @@ const PostCard = ({
   handleSubmit,
   inputValue,
   inputValue: { title, post },
-  profile: { profile_picture, firstName },
+  profile: {
+    profile_picture: { medium },
+    firstName,
+  },
 }) => {
   const isFormValid = title?.trim() && post?.trim();
   let placeholder = `${title ? title.trim() : ""} ${post ? post.trim() : ""}`.trim();
@@ -34,7 +37,7 @@ const PostCard = ({
         isFormValid={isFormValid}
         isModalOpen={isModalOpen}
         errors={errors}
-        profile_picture={profile_picture}
+        profile_picture={medium}
         firstName={firstName}
         inputValue={inputValue}
         hideModal={hideModal}

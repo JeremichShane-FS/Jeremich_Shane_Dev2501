@@ -1,10 +1,12 @@
+import { useContext } from "react";
 import { Outlet } from "react-router-dom";
 import Aside from "../components/Aside";
-import { userProfile } from "../constants/userProfile";
+import { AppContext } from "../contexts";
 import { OpenContextMenuProvider } from "../contexts/OpenContextMenuContext";
 import { AdSection, Footer, Header, NavSidebar } from "../layout";
 
 const Root = () => {
+  const { userProfile } = useContext(AppContext);
   return (
     <OpenContextMenuProvider>
       <Header title="FriendSpace" placeholder="Search" userProfile={userProfile} />

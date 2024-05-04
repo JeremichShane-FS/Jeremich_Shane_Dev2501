@@ -51,8 +51,13 @@
     position: relative;
 
     & .context-menu {
+      width: 200px;
       right: 0;
-      bottom: auto;
+      bottom: -162px;
+
+      &__arrow {
+        display: none;
+      }
     }
   }
 
@@ -85,7 +90,7 @@
     right: 0;
     bottom: 0;
     transform: translate(50%, -50%);
-    background-color: $ultra-violet;
+    background: $ultra-violet;
 
     &--active {
       background: $status-active-color;

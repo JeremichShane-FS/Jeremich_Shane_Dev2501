@@ -1,7 +1,9 @@
-import { userProfile } from "../../constants/userProfile";
+import { useContext } from "react";
+import { AppContext } from "../../contexts";
 import Avatar from "../Avatar";
 
 const RecentFriends = () => {
+  const { userProfile } = useContext(AppContext);
   return (
     <div className="recent-friends">
       <ul className="recent-friends__list">

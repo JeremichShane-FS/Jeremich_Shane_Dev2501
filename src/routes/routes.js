@@ -1,24 +1,50 @@
-import { Dashboard, Messages, Newsfeed, NotFoundPage, Notifications, Settings } from "../pages";
-import { Friends, Groups, Memories, Saved, Video } from "../pages/left-sidebar";
-import Root from "./Root";
+import {
+  Dashboard,
+  Messages,
+  Newsfeed,
+  NotFoundPage,
+  Notifications,
+  Profile,
+  Settings,
+} from "../pages";
+import { Friends, Groups, Memories, Saved, Video, Watch } from "../pages/left-sidebar";
+import {
+  DASHBOARD,
+  FRIENDS,
+  GROUPS,
+  MEMORIES,
+  MESSAGES,
+  NEWSFEED,
+  NOTIFICATIONS,
+  NOT_FOUND,
+  PROFILE,
+  ROOT,
+  SAVED,
+  SETTINGS,
+  VIDEO,
+  WATCH,
+} from "../constants";
+import { Root } from "./";
 
 export const routes = [
   {
-    path: "/",
+    path: ROOT,
     element: <Root />,
     children: [
-      { path: "/", element: <Newsfeed /> },
-      { path: "/newsfeed", element: <Newsfeed /> },
-      { path: "/dashboard", element: <Dashboard /> },
-      { path: "/messages", element: <Messages /> },
-      { path: "/settings", element: <Settings /> },
-      { path: "/notifications", element: <Notifications /> },
-      { path: "/friends", element: <Friends /> },
-      { path: "/groups", element: <Groups /> },
-      { path: "/memories", element: <Memories /> },
-      { path: "/saved", element: <Saved /> },
-      { path: "/video", element: <Video /> },
-      { path: "*", element: <NotFoundPage /> },
+      { path: DASHBOARD, element: <Dashboard /> },
+      { path: FRIENDS, element: <Friends /> },
+      { path: GROUPS, element: <Groups /> },
+      { path: MEMORIES, element: <Memories /> },
+      { path: MESSAGES, element: <Messages /> },
+      { path: NEWSFEED, element: <Newsfeed /> },
+      { path: NOT_FOUND, element: <NotFoundPage /> },
+      { path: NOTIFICATIONS, element: <Notifications /> },
+      { path: PROFILE, element: <Profile /> },
+      { path: ROOT, element: <Newsfeed /> },
+      { path: SAVED, element: <Saved /> },
+      { path: SETTINGS, element: <Settings /> },
+      { path: VIDEO, element: <Video /> },
+      { path: WATCH, element: <Watch /> },
     ],
   },
 ];

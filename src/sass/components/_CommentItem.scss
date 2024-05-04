@@ -15,7 +15,7 @@
     &__bubble {
       @include flex-column;
       padding: $small-gap;
-      background-color: $dark-gray-200;
+      background: $dark-gray-200;
       border-radius: $large-border-radius;
       font-size: $small-font-size;
     }

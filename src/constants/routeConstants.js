@@ -1,0 +1,14 @@
+export const DASHBOARD = "/dashboard";
+export const FRIENDS = "/friends";
+export const GROUPS = "/groups";
+export const MEMORIES = "/memories";
+export const MESSAGES = "/messages";
+export const NEWSFEED = "/newsfeed";
+export const NOT_FOUND = "*";
+export const NOTIFICATIONS = "/notifications";
+export const PROFILE = "/profile";
+export const ROOT = "/";
+export const SAVED = "/saved";
+export const SETTINGS = "/settings";
+export const VIDEO = "/video";
+export const WATCH = "/watch";

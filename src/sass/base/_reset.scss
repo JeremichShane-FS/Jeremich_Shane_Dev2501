@@ -85,6 +85,12 @@ textarea:not([rows]) {
   min-height: 10em;
 }
 
+select {
+  -webkit-appearance: none; // for Safari
+  -moz-appearance: none; // for Firefox
+  appearance: none;
+}
+
 /* Anything that has been anchored to should have extra scroll margin */
 :target {
   scroll-margin-block: 5ex;

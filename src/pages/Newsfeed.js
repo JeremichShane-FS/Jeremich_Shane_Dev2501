@@ -2,7 +2,6 @@ import { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
 import CreatePostCard from "../components/cards/CreatePostCard";
 import NewsfeedCard from "../components/cards/NewsfeedCard";
-import { userProfile } from "../constants/userProfile";
 import { AppContext, OpenContextMenuContext } from "../contexts";
 import { handleClassObjectInputChange, saveToLocalStorage } from "../utils";
 
@@ -19,12 +18,7 @@ export default class Newsfeed extends Component {
       post: "",
     },
     isModalOpen: false,
-    currentUser: userProfile,
   };
-
-  // setOpenContextMenu = postId => {
-  //   this.context(postId);
-  // };
 
   showModal = () => {
     this.setState({ isModalOpen: true });
@@ -85,7 +79,7 @@ export default class Newsfeed extends Component {
 
     const newPost = {
       id: this.state.editPostId || uuidv4(),
-      userId: this.state.currentUser.id,
+      userId: this.context.userProfile.id,
       timestamp: new Date().toISOString(),
       title: this.state.inputValue.title,
       content: this.state.inputValue.post,
@@ -119,8 +113,8 @@ export default class Newsfeed extends Component {
   };
 
   render() {
-    const { loading, posts } = this.context;
-    const { currentUser, editPostId, errors, inputValue, isModalOpen } = this.state;
+    const { loading, posts, userProfile } = this.context;
+    const { editPostId, errors, inputValue, isModalOpen } = this.state;
 
     const { handleDelete, handleEdit, handleInputChange, handleSubmit, hideModal, showModal } =
       this;
@@ -150,7 +144,7 @@ export default class Newsfeed extends Component {
               return (
                 <NewsfeedCard
                   key={post.id}
-                  currentUser={currentUser}
+                  currentUser={userProfile}
                   handleDelete={handleDelete}
                   handleEdit={handleEdit}
                   openContextMenu={openContextMenu}

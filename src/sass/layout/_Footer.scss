@@ -2,7 +2,7 @@
 @use "../utilities/" as *;
 
 .footer {
-  background-color: $eerie-black;
+  background: $eerie-black;
   text-align: center;
   padding: $medium-gap;
   position: fixed;

@@ -1,0 +1,38 @@
+@use "../base/" as *;
+@use "../utilities/" as *;
+
+.notifications {
+  width: 42.5rem;
+  background: $eerie-black;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+
+  &__title {
+    font-size: $large-font-size;
+    font-weight: 700;
+    margin-bottom: $small-gap;
+    padding: 0.65rem 1rem;
+    background: $eerie-black;
+    border-radius: $small-border-radius;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $gray-700;
+    padding: 10px 0;
+  }
+
+  &__message {
+    margin: 0;
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    color: $tiffany-blue;
+    cursor: pointer;
+  }
+}

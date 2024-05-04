@@ -9,7 +9,7 @@
   width: max-content;
   max-height: 17.375rem;
   right: 75%;
-  background-color: $eerie-black;
+  background: $eerie-black;
   border: 1px solid $dark-gray-100;
   padding: 10px 20px;
   overflow-x: hidden;
@@ -25,7 +25,7 @@
     width: 100%;
     padding: 10px;
     text-align: center;
-    transition: background-color 0.2s;
+    transition: background 0.2s;
 
     &:hover {
       @include hover-style;

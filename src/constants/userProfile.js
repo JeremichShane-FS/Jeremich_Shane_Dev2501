@@ -1,10 +1,20 @@
 // Harding coding user profile data for now
 export const userProfile = {
-  id: "u493u8y78",
-  firstName: "Emily",
-  lastName: "Doe",
-  profile_picture: "https://randomuser.me/api/portraits/thumb/women/19.jpg",
-  location: "Rochester, NY",
+  id: "",
+  firstName: "",
+  lastName: "",
+  profile_picture: {
+    large: "",
+    medium: "",
+    thumbnail: "",
+  },
+  email: "",
+  street: "",
+  city: "",
+  state: "",
+  postcode: "",
+  username: "",
+  password: "",
 
   friends: [
     {

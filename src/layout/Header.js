@@ -5,12 +5,21 @@ import { Link } from "react-router-dom";
 import logo from "../assets/img/fs.png";
 import Avatar from "../components/Avatar";
 import ContextMenu from "../components/ContextMenu";
-import { HeaderProfile } from "../components/context-menu";
+import { HeaderContextMenu } from "../components/context-menu";
 import SearchBar from "../components/forms/SearchBar";
+import { MESSAGES, NOTIFICATIONS, ROOT, SETTINGS } from "../constants";
 import { OpenContextMenuContext } from "../contexts";
 import { useClickOutside } from "../hooks";
 
-const Header = ({ title, color, menuPosition, userProfile: { profile_picture } }) => {
+const Header = ({
+  title,
+  color,
+  menuPosition,
+  userProfile,
+  userProfile: {
+    profile_picture: { medium },
+  },
+}) => {
   const {
     openContextMenu,
     setOpenContextMenu,
@@ -30,7 +39,7 @@ const Header = ({ title, color, menuPosition, userProfile: { profile_picture } }
   return (
     <header className="header">
       <section className="header__logo-container">
-        <Link to="/">
+        <Link to={ROOT}>
           <img src={logo} alt="FriendSpace Logo" className="header__logo-container__logo" />
           <h1 className="header__logo-container__h1" style={{ color: `${color}` }}>
             {title}
@@ -44,27 +53,27 @@ const Header = ({ title, color, menuPosition, userProfile: { profile_picture } }
         </div>
       </section>
       <section className="header__profile-container">
-        <Link to="/notifications">
+        <Link to={NOTIFICATIONS}>
           <span className="header__profile__span">
             <FaBell className="header__icon" aria-label="notifications" />
           </span>
         </Link>
-        <Link to="/messages">
+        <Link to={MESSAGES}>
           <span className="header__profile__span">
             <FaEnvelope className="header__icon" aria-label="messages" />
           </span>
         </Link>
-        <Link to="/settings">
+        <Link to={SETTINGS}>
           <span className="header__profile__span">
             <IoSettings className="header__icon" aria-label="settings" />
           </span>
         </Link>
         <div className="header__profile-avatar" onClick={handleContextMenu}>
-          <Avatar border img={profile_picture}>
+          <Avatar border img={medium}>
             <span className="header__status header__status--active"></span>
           </Avatar>
           <ContextMenu ref={menuRef} isOpen={isOpen} menuPosition={menuPosition}>
-            <HeaderProfile />
+            <HeaderContextMenu />
           </ContextMenu>
         </div>
       </section>

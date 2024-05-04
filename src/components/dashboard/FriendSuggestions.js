@@ -1,8 +1,10 @@
-import { userProfile } from "../../constants/userProfile";
+import { useContext } from "react";
+import { AppContext } from "../../contexts";
 import Avatar from "../Avatar";
 import FormButton from "../buttons/FormButton";
 
 const FriendSuggestions = () => {
+  const { userProfile } = useContext(AppContext);
   return (
     <div className="friend-suggestions">
       <ul className="friend-suggestions__list">

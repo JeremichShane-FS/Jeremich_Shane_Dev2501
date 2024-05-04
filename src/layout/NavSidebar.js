@@ -1,15 +1,22 @@
 import { Link } from "react-router-dom";
 import Avatar from "../components/Avatar";
+import { PROFILE } from "../constants";
 import { navSidebar } from "../constants/navSidebar";
 
-const NavSidebar = ({ userProfile: { firstName, lastName, profile_picture } }) => {
+const NavSidebar = ({
+  userProfile: {
+    firstName,
+    lastName,
+    profile_picture: { medium },
+  },
+}) => {
   return (
     <nav role="navigation" className="navsidebar">
       <ul className="navsidebar__list">
-        <Link path="/">
+        <Link to={PROFILE}>
           <li className="navsidebar__list-item">
             <button className="navsidebar__image">
-              <Avatar img={profile_picture} height="2rem" width="2rem" />
+              <Avatar img={medium} height="2rem" width="2rem" />
               {firstName} {lastName}
             </button>
           </li>

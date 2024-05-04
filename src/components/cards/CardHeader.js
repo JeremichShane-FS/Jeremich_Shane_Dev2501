@@ -17,18 +17,23 @@ const CardHeader = ({
   timestamp,
   userId,
   currentUser: { id },
+  user,
   user: { firstName, lastName, profile_picture },
 }) => {
   const isOpen = openContextMenu && openContextMenu.source === "NewsfeedCard";
   const handleContextMenu = e => {
     handleContextMenuProp(e, "NewsfeedCard", postId);
   };
+
+  const useProfilePicture =
+    profile_picture && profile_picture.medium ? profile_picture.medium : profile_picture;
+
   return (
     <div className="newsfeed-card__header-container">
       <div className="newsfeed-card__profile">
         <Avatar
           className="newsfeed-card__profile__picture"
-          img={profile_picture}
+          img={useProfilePicture}
           width="3.125rem"
           height="3.125rem"
         />
