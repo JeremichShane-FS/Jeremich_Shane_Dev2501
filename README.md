@@ -16,3 +16,4 @@ Each branch in this repository serves a specific purpose:
 - **01_Components:** 🧩 Set up React project and the necessary components.
 - **02_Application:** 📱 Implemented C.R.U.D. into the application.
 - **03_Routing:** 🚦 Implemented routing using React Router.
+- **04_API:** 📡 Implemented fetch, using async/await, to receive data.
