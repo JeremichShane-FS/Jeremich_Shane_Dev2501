@@ -1,5 +1,3 @@
-import React from "react";
-
 const CardContent = ({ title, content, imageUrl }) => {
   return (
     <div className="newsfeed-card__post-content">
