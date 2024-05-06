@@ -8,6 +8,8 @@ import { states } from "../constants/state";
 import { AppContext } from "../contexts/AppContext";
 import { saveToLocalStorage } from "../utils";
 
+// TODO: Add verification for the form fields to ensure they are not empty or invalid
+
 const formFields = [
   "firstName",
   "lastName",
