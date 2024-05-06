@@ -2,15 +2,28 @@
 @use "../utilities/" as *;
 
 .settings {
-  width: 60rem;
-  display: flex;
-  flex-direction: column;
+  max-width: 42.5rem;
+  width: 100%;
   gap: 2rem;
   margin-bottom: 1rem;
   padding: 1rem;
   background: $ultra-violet;
   border: 5px solid $eerie-black;
   border-radius: $small-border-radius;
+
+  @media screen and (max-width: 1170px) {
+    max-width: 78%;
+    gap: unset;
+  }
+
+  @media screen and (max-width: 800px) {
+    margin-top: 0.85rem;
+  }
+
+  @media screen and (max-width: 700px) {
+    margin-top: unset;
+    max-width: 100%;
+  }
 
   &__title {
     font-size: $large-font-size;
@@ -25,6 +38,11 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+
+    @media screen and (max-width: 900px) {
+      display: flex;
+      flex-direction: column;
+    }
 
     &-avatar {
       @include flex-center;

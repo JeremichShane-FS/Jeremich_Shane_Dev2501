@@ -2,11 +2,28 @@
 @use "../utilities/" as *;
 
 .messages {
-  width: 42.5rem;
+  max-width: 42.5rem;
+  min-width: 42.5rem;
+  width: 100%;
   background: $eerie-black;
   border-radius: 5px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
+
+  @media screen and (max-width: 1170px) {
+    min-width: unset;
+    max-width: 78%;
+    gap: unset;
+  }
+
+  @media screen and (max-width: 800px) {
+    margin-top: 0.85rem;
+  }
+
+  @media screen and (max-width: 700px) {
+    margin-top: unset;
+    max-width: 100%;
+  }
 }
 
 .messages__title {

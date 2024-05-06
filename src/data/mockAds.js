@@ -4,14 +4,20 @@ export const mockAds = [
     id: 1,
     title: "ZipRecruiter",
     description: "Post Jobs for Free.  Find Great Talent Today.",
-    url: "https://www.ziprecruiter.com/post-a-job",
+    url: {
+      href: "https://www.ziprecruiter.com/post-a-job",
+      text: "ziprecruiter.com",
+    },
     image: "/img/ziprecruiter.jpeg",
   },
   {
     id: 2,
     title: "Flodesk",
     description: "Design emails people love to get.",
-    url: "https://flodesk.com/",
+    url: {
+      href: "https://flodesk.com/",
+      text: "flodesk.com",
+    },
     image: "/img/flodesk.jpg",
   },
 ];

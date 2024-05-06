@@ -2,8 +2,27 @@
 @use "../utilities/" as *;
 
 .navsidebar {
+  display: block;
+  position: fixed;
+  top: 5.25rem;
+  left: 0;
+  width: 20%;
+  // min-width: 18.75rem;
+  height: calc(100vh - 9rem - 1rem);
+  overflow-y: auto;
+  overflow-x: hidden;
+
   &__list {
     @include link-margin;
+
+    @media (max-width: 1170px) {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+
+      .navsidebar.open & {
+        transform: translateX(0);
+      }
+    }
   }
   &__list-item {
     display: flex;
@@ -16,6 +35,11 @@
     & div {
       width: 100%;
     }
+  }
+
+  &__name {
+    @include flex-center;
+    gap: $medium-gap;
   }
 
   &__image {
@@ -35,5 +59,21 @@
   &__icon {
     margin-right: $medium-gap;
     font-size: $large-font-size;
+  }
+
+  @media (max-width: 1170px) {
+    display: none;
+    top: 60px;
+    transform: translateX(-100%);
+    transition: all 0.3s ease-in-out;
+
+    &.open {
+      display: block;
+      transform: translateX(0);
+      width: 18.75rem;
+      padding: $small-gap;
+      background: $eerie-black;
+      z-index: $header-z-index;
+    }
   }
 }

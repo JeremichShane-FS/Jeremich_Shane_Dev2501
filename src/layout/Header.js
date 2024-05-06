@@ -4,6 +4,7 @@ import { IoSettings } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/fs.png";
 import Avatar from "../components/Avatar";
+import Burger from "../components/Burger";
 import ContextMenu from "../components/ContextMenu";
 import { HeaderContextMenu } from "../components/context-menu";
 import SearchBar from "../components/forms/SearchBar";
@@ -15,7 +16,7 @@ const Header = ({
   title,
   color,
   menuPosition,
-  userProfile,
+  onBurgerClick,
   userProfile: {
     profile_picture: { medium },
   },
@@ -26,6 +27,7 @@ const Header = ({
     handleContextMenu: handleContextMenuProp,
   } = useContext(OpenContextMenuContext);
   const menuRef = useRef(null);
+
   const handleContextMenu = e => {
     handleContextMenuProp(e, "Header");
   };
@@ -39,6 +41,7 @@ const Header = ({
   return (
     <header className="header">
       <section className="header__logo-container">
+        <Burger onClick={onBurgerClick} />
         <Link to={ROOT}>
           <img src={logo} alt="FriendSpace Logo" className="header__logo-container__logo" />
           <h1 className="header__logo-container__h1" style={{ color: `${color}` }}>

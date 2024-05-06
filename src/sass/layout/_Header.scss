@@ -11,7 +11,9 @@
   z-index: $header-z-index;
 
   &__logo-container {
-    align-self: center;
+    @include flex-center;
+    gap: $large-gap;
+
     a {
       display: flex;
       width: fit-content;
@@ -53,7 +55,7 @@
     & .context-menu {
       width: 200px;
       right: 0;
-      bottom: -162px;
+      bottom: -250px;
 
       &__arrow {
         display: none;
@@ -75,6 +77,14 @@
     border-radius: 50%;
 
     @include hover-style;
+
+    @media screen and (max-width: 800px) {
+      margin-right: 0;
+    }
+
+    @media screen and (max-width: 500px) {
+      display: none;
+    }
   }
 
   &__icon {
@@ -116,7 +126,7 @@
     padding: $small-gap;
   }
 
-  @media (max-width: 680px) {
+  @media (max-width: 800px) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto auto;
 

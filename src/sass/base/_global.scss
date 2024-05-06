@@ -37,11 +37,32 @@ body {
   overflow-y: auto;
   padding: 5.25rem 0 3.75rem;
   overflow-x: hidden;
+
+  @media screen and (max-width: 1170px) {
+    grid-template-columns: 1fr 20%;
+    gap: unset;
+  }
+
+  @media screen and (max-width: 800px) {
+    padding: 7.25rem 0 1.75rem;
+  }
 }
 
 .pages {
   max-width: max-content;
   margin: 0 auto;
+
+  @media screen and (max-width: 1170px) {
+    grid-column: 1 / -1;
+    max-width: unset;
+    margin: unset;
+    margin-left: 1rem;
+  }
+
+  @media (max-width: 700px) {
+    margin-left: unset;
+    margin: 1rem;
+  }
 }
 
 .truncate {
